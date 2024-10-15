@@ -180,62 +180,63 @@ Day 1-2: Project Setup and Basic Server Implementation <br/>
 Tasks:
 Set up the project repository and initialize the file structure.
 Initialize the Express.js server.
-Create basic endpoints for fetching quotes and storing journal/mood entries.
-Outcome: A functioning server with basic routes set up.
-Day 3-4: Journal Entry Functionality
+Create basic endpoints for fetching quotes and storing journal/mood entries. <br/>
+Outcome: A functioning server with basic routes set up. <br/>
+Day 3-4: Journal Entry Functionality <br/>
 Tasks:
 Implement endpoints for creating and retrieving journal entries.
-Develop the frontend components for journal entry forms and lists.
-Outcome: Users can create and view journal entries.
-Day 5: Mood Entry Functionality
+Develop the frontend components for journal entry forms and lists. <br/>
+Outcome: Users can create and view journal entries. <br/>
+Day 5: Mood Entry Functionality <br/>
 Tasks:
 Implement endpoints for creating and retrieving mood entries.
-Create frontend components for mood entry and history display.
+Create frontend components for mood entry and history display. <br/>
 Outcome: Users can log their mood and view mood entries.
-Day 6: Integrate Motivational Quotes API
+Day 6: Integrate Motivational Quotes API <br/>
 Tasks:
 Choose and implement a motivational quotes API.
-Display a new motivational quote on the home page each day.
-Outcome: Users receive daily motivational quotes.
-Day 7: Testing and Refinement
+Display a new motivational quote on the home page each day. <br/>
+Outcome: Users receive daily motivational quotes. <br/>
+Day 7: Testing and Refinement <br/>
 Tasks:
 Write tests for backend endpoints.
-Perform manual testing to ensure all features are functioning.
-Outcome: All features should be working correctly with any bugs fixed.
-Week 2
-Day 8: Mood Tracker and Basic Analytics
+Perform manual testing to ensure all features are functioning. <br/>
+Outcome: All features should be working correctly with any bugs fixed. <br/>
+<br/>
+Week 2 <br/>
+Day 8: Mood Tracker and Basic Analytics<br/>
 Tasks:
 Create a simple history view for mood entries.
-Develop basic logic to display mood trends (e.g., most common mood).
-Outcome: Users can view their mood history.
-Day 9: Reminders & Notifications
+Develop basic logic to display mood trends (e.g., most common mood).<br/>
+Outcome: Users can view their mood history. <br/>
+Day 9: Reminders & Notifications <br/>
 Tasks:
 Implement a simple notification system for daily reminders (browser notifications).
-Create settings for users to adjust reminders.
-Outcome: Users receive notifications to prompt daily reflection.
-Day 10: Responsive Design and UI Enhancements
+Create settings for users to adjust reminders.<br/>
+Outcome: Users receive notifications to prompt daily reflection.<br/>
+Day 10: Responsive Design and UI Enhancements<br/>
 Tasks:
 Improve UI for mobile responsiveness.
-Style the application using SCSS to enhance aesthetics.
-Outcome: A visually appealing, user-friendly interface.
-Day 11: Final Touches and Feature Enhancements
+Style the application using SCSS to enhance aesthetics. <br/>
+Outcome: A visually appealing, user-friendly interface. <br/>
+Day 11: Final Touches and Feature Enhancements <br/>
 Tasks:
 Add any additional features based on user feedback.
-Ensure that the app meets all project requirements.
-Outcome: Finalized application with all planned features.
-Day 12: Deployment Preparation
+Ensure that the app meets all project requirements. <br/>
+Outcome: Finalized application with all planned features. <br/>
+Day 12: Deployment Preparation <br/>
 Tasks:
 Prepare the app for deployment on Heroku or Vercel.
-Document the deployment process.
-Outcome: App is ready for deployment.
-Day 13-14: Deployment and Documentation
+Document the deployment process. <br/>
+Outcome: App is ready for deployment. <br/>
+Day 13-14: Deployment and Documentation <br/>
 Tasks:
 Deploy the app.
-Write final project documentation (README.md, API documentation, user guide).
-Outcome: Project is live and fully documented.
-Milestones
-End of Week 1: Basic functionality (journal entries, mood tracking, and quotes) implemented.
-End of Week 2: All features refined, tested, and deployed with complete documentation.
+Write final project documentation (README.md, API documentation, user guide). <br/>
+Outcome: Project is live and fully documented. <br/>
+Milestones <br/>
+End of Week 1: Basic functionality (journal entries, mood tracking, and quotes) implemented. <br/>
+End of Week 2: All features refined, tested, and deployed with complete documentation. <br/>
 
 ---
 
