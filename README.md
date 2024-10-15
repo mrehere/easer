@@ -175,8 +175,8 @@ moodId (string, required)
 
 ## Roadmap
 
-Week 1
-Day 1-2: Project Setup and Basic Server Implementation
+Week 1 <br/>
+Day 1-2: Project Setup and Basic Server Implementation <br/>
 Tasks:
 Set up the project repository and initialize the file structure.
 Initialize the Express.js server.
