@@ -72,7 +72,9 @@ Home Page
 
 ### Mockups
 
-Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.
+![landing](/client/assets/images/landing.png)
+![journal](/client/assets/images/journal.png)
+![tracker](/client/assets/images/tracker.png)
 
 ### Data
 
