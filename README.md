@@ -4,11 +4,11 @@ EASER
 
 ## Overview
 
-The Daily Motivation & Reflection Tracker is a web application that helps users improve their emotional well-being by providing daily motivational quotes and a platform for self-reflection. Users can track their moods, journal about their day, and set personal goals, with the app offering insights and visualizations of their emotional trends over time.
+The Daily Motivation & Reflection Tracker is a web application primarily designed for mobile devices that helps users improve their emotional well-being. The app provides daily motivational quotes and a platform for self-reflection, allowing users to track their moods and journal about their day. Additionally, it offers insights and visualizations of their emotional experiences over time, all optimized for a seamless mobile experience.
 
 ### Problem Space
 
-Many people struggle to maintain emotional well-being due to busy schedules and stress, often neglecting self-reflection and personal growth. Existing tools for journaling or mood tracking can be either too complex or lack motivation. The Daily Motivation & Reflection Tracker simplifies this process by combining daily motivational quotes with easy journaling, mood tracking, and goal setting, helping users build self-awareness and improve their mental health.
+Many people struggle to maintain emotional well-being due to busy schedules and stress, often neglecting self-reflection and personal growth. Existing tools for journaling or mood tracking can be either too complex or lack motivation. The Daily Motivation & Reflection Tracker simplifies this process by combining daily motivational quotes with easy journaling, mood tracking, helping users build self-awareness and improve their mental health.
 
 ### User Profile
 
@@ -61,7 +61,9 @@ Home Page
 Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling happy, sad, anxious) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
 Mood Tracker Page
 
+Mood page
 Description: This page displays users' mood history. Users can view a list of their past mood ratings, providing insight into emotional trends over time. It allows users to track how their mood fluctuates daily.
+
 Journal Page
 
 Description: Users can view their previous journal entries on this page. It provides an organized list of past reflections, allowing users to revisit their thoughts and experiences.
@@ -238,10 +240,13 @@ End of Week 2: All features refined, tested, and deployed with complete document
 ## Future Implementations
 
 -daily motivational quotes with the option to mark it as a favorite for future reference
+
 -mood statistics where user can see a chart or trend to follow the mode history
+
 -Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
 
 - add authentications
 
 -establish the database in MySQL with primary userID key, with relation between Mood, and journal entry
+
 -give an emoji picker to chose mood
