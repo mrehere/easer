@@ -1,0 +1,60 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.home {
+  &__card {
+    @include flex(unset, column, center, center);
+    padding: 0 1rem 0 1rem;
+    margin: 0 2rem 0 2rem;
+    background-color: $neutral;
+    border-radius: 0.5rem;
+  }
+
+  &__quote {
+    padding-top: 2rem;
+  }
+  &__quoteAuthor {
+    padding: 2rem 0 1rem 0;
+    margin-left: auto;
+  }
+
+  &__moodSelector {
+    @include flex(unset, row, center, space-evenly);
+    background-color: $neutral;
+    height: 3rem;
+    margin: 1rem 2rem 1rem 2rem;
+    border-radius: 0.5rem;
+  }
+
+  &__joyful,
+  &__content,
+  &__confused,
+  &__angry,
+  &__crying {
+    font-size: 1.5rem;
+    @include flex(unset, column, center, center);
+    &:hover {
+      // font-size: 2.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &__joyfulText,
+  &__contentText,
+  &__confusedText,
+  &__angryText,
+  &__cryingText {
+    display: none;
+    opacity: none;
+  }
+
+  &__joyful:hover &__joyfulText,
+  &__content:hover .home__contentText,
+  &__confused:hover .home__confusedText,
+  &__angry:hover .home__angryText,
+  &__crying:hover .home__cryingText {
+    display: block;
+    opacity: 1;
+    font-size: 0.75rem;
+    color: $charcoal;
+  }
+}
