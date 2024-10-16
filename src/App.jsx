@@ -1,12 +1,22 @@
 import "./styles/partials/_global.scss";
-import Header from "./Components/Header/Header.jsx";
-import Footer from "./Components/Footer/Footer.jsx";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home.jsx";
+import Journal from "./pages/Journal/Journal.jsx";
+import Mood from "./pages/Mood/Mood.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 function App() {
   return (
     <>
-      <h1>Helloooooooooooos</h1>
-      <Header />
-      <Footer />
+      <BrowserRouter>
+        <h1>Helloooooooooooos</h1>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/mood" element={<Mood />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
