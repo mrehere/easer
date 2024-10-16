@@ -35,6 +35,11 @@ function Home() {
               <span className="home__cryingText">crying</span>
             </div>
           </div>
+
+          <div className="home__buttonContainer">
+            <button className="home__preserve">preserve!</button>
+            <button className="home__cancel">cancel</button>
+          </div>
         </section>
       </main>
     </>
