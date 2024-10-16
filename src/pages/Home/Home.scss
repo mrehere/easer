@@ -1,27 +1,97 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .home {
+  // &__card {
+  //   @include flex(unset, column, center, center);
+  //   padding: 0 1rem 0 1rem;
+  //   margin: 0 2rem 0 2rem;
+  //   background-color: $neutral;
+  //   border-radius: 0.5rem;
+  // }
+
+  // &__quote {
+  //   padding-top: 2rem;
+  // }
+  // &__quoteAuthor {
+  //   padding: 2rem 0 1rem 0;
+  //   margin-left: auto;
+  // }
   &__card {
     @include flex(unset, column, center, center);
     padding: 0 1rem 0 1rem;
     margin: 0 2rem 0 2rem;
     background-color: $neutral;
     border-radius: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeQuote 1s ease-out forwards;
+  }
+
+  @keyframes fadeQuote {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &__quote {
     padding-top: 2rem;
+    font-size: 1.5rem;
+    color: $charcoal;
+
+    text-align: center;
+    opacity: 0;
+    animation: textAppear 2s ease-out 0.5s forwards;
   }
+
+  @keyframes textAppear {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
   &__quoteAuthor {
     padding: 2rem 0 1rem 0;
     margin-left: auto;
+    opacity: 0;
+    animation: authorFadeIn 1.5s ease-out 2s forwards;
+    font-style: italic;
   }
 
+  @keyframes authorFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  &__moodContainer {
+    @include flex(unset, column, center, center);
+    margin: 2rem 2rem 1rem 2rem;
+  }
+  &__moodHeader {
+    color: $charcoal;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
   &__moodSelector {
-    @include flex(unset, row, center, space-evenly);
+    @include flex(100%, row, center, space-evenly);
     background-color: $neutral;
     height: 3rem;
-    margin: 1rem 2rem 1rem 2rem;
+
     border-radius: 0.5rem;
   }
 
@@ -32,9 +102,10 @@
   &__crying {
     font-size: 1.5rem;
     @include flex(unset, column, center, center);
+    transition: transform 0.3s ease;
     &:hover {
-      // font-size: 2.5rem;
       cursor: pointer;
+      transform: translateY(-2px);
     }
   }
 
@@ -56,5 +127,6 @@
     opacity: 1;
     font-size: 0.75rem;
     color: $charcoal;
+    font-weight: bold;
   }
 }
