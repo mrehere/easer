@@ -1,0 +1,80 @@
+@use "./variables" as *;
+
+@mixin flex($width: unset, $direction: row, $align: normal, $justify: normal) {
+  display: flex;
+  width: $width;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin header-desktop {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+@mixin subheader-desktop {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin labels-desktop {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+@mixin table-header-desktop {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+@mixin p1-desktop {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+@mixin header-mobile {
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+@mixin subheader-mobile {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@mixin label-mobile {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+@mixin table-header-mobile {
+  font-weight: 400;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
+
+@mixin p1-mobile {
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
