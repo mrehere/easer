@@ -1,9 +1,12 @@
 import "./Header.scss";
-function Header() {
+function Header({ title, subtitle }) {
   return (
-    <div>
-      <h1>Hello from Header</h1>
-    </div>
+    <>
+      <header className="header">
+        <h1 className="header__title">{title}</h1>
+        <h4 className="header__subTitle">{subtitle}</h4>
+      </header>
+    </>
   );
 }
 
