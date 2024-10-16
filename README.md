@@ -76,9 +76,9 @@ Home Page
 
 ### Mockups
 
-![landing](/client/assets/images/landing.png)
-![journal](/client/assets/images/journal.png)
-![tracker](/client/assets/images/tracker.png)
+![landing](/src/assets/images/landing.png)
+![journal](/src/assets/images/journal.png)
+![tracker](/src/assets/images/tracker.png)
 
 ### Data
 
