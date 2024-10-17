@@ -15,7 +15,8 @@
   border-top-right-radius: 1.25rem;
 
   &__journalContainer,
-  &__moodContainer {
+  &__moodContainer,
+  &__homeContainer {
     @include flex(unset, column, center, center);
   }
 
@@ -27,7 +28,8 @@
   }
 
   &__mood,
-  &__journal {
+  &__journal,
+  &__home {
     color: white;
     font-weight: bold;
     &--active {

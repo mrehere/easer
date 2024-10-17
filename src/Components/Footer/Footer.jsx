@@ -1,9 +1,14 @@
 import { useNavigate } from "react-router-dom";
+
 import "./Footer.scss";
 
 function Footer() {
   const routeStatus = location.pathname;
   const navigate = useNavigate();
+
+  const clickHome = () => {
+    navigate("/");
+  };
 
   const clickJournal = () => {
     navigate("/journal");
@@ -15,9 +20,34 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer__journalContainer">
+      {routeStatus !== "/" && (
+        <div
+          onClick={() => clickHome()}
+          className={`footer__homeContainer ${
+            routeStatus === "/" ? "footer__homeContainer--active" : ""
+          }`}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48px"
+            viewBox="0 -960 960 960"
+            width="48px"
+            fill={routeStatus === "/" ? "#a5d6a7" : "#FFFFFF"}
+          >
+            <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+          </svg>
+
+          <p
+            className={`footer__home ${
+              routeStatus === "/" ? "footer__home--active" : ""
+            }`}
+          >
+            Home
+          </p>
+        </div>
+      )}
+      <div onClick={() => clickJournal()} className="footer__journalContainer">
         <svg
-          onClick={() => clickJournal()}
           className="footer__journalIcon"
           xmlns="http://www.w3.org/2000/svg"
           height="48px"
@@ -37,9 +67,8 @@ function Footer() {
         </p>
       </div>
 
-      <div className="footer__moodContainer">
+      <div onClick={() => clickMood()} className="footer__moodContainer">
         <svg
-          onClick={() => clickMood()}
           className="footer__moodIcon"
           xmlns="http://www.w3.org/2000/svg"
           height="48px"
