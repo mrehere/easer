@@ -41,6 +41,20 @@ function Home() {
             <button className="home__cancel">cancel</button>
           </div>
         </section>
+
+        <form className="home__journalContainer">
+          <p className="home__moodHeader">How are you feeling today?</p>
+          <textarea
+            type="text"
+            placeholder="enter your feelings!"
+            className="home__journal"
+          ></textarea>
+
+          <div className="home__buttonContainer">
+            <button className="home__preserve">preserve!</button>
+            <button className="home__cancel">cancel</button>
+          </div>
+        </form>
       </main>
     </>
   );

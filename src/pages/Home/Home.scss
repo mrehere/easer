@@ -1,6 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 .home {
+  // -------------quotes------------
   &__card {
     @include flex(unset, column, center, center);
     padding: 0 1rem 0 1rem;
@@ -63,6 +64,8 @@
       opacity: 1;
     }
   }
+
+  // --------------mood---------------
   &__moodContainer {
     @include flex(unset, column, center, center);
     margin: 2rem 2rem 1rem 2rem;
@@ -90,7 +93,10 @@
     transition: transform 0.3s ease;
     &:hover {
       cursor: pointer;
-      transform: translateY(-2px);
+      transform: translateY(-10px);
+    }
+    &:active {
+      transform: translateY(-10px);
     }
   }
 
@@ -141,6 +147,42 @@
     background-color: $coral;
     &:hover {
       background-color: darken($coral, 10%);
+    }
+  }
+}
+// --------------journal entry-------------
+.home {
+  &__journalContainer {
+    @include flex(unset, column, center, center);
+    margin: 2rem 2rem 1rem 2rem;
+  }
+
+  &__journal {
+    width: 100%;
+    height: 7rem;
+    background-color: $neutral;
+    color: $charcoal;
+    font-weight: 500;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    resize: none;
+    overflow-y: auto;
+
+    &::placeholder {
+      color: $charcoal;
+      text-align: center;
+      padding: 2.25rem 0.5rem;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: darken($charcoal, 10%);
+      background-color: lighten($neutral, 5%);
+      &::placeholder {
+        opacity: 0;
+      }
     }
   }
 }
