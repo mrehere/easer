@@ -27,5 +27,8 @@
   &__journal {
     color: white;
     font-weight: bold;
+    &--active {
+      color: $mint;
+    }
   }
 }
