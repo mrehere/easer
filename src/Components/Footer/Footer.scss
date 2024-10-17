@@ -19,8 +19,11 @@
     @include flex(unset, column, center, center);
   }
 
-  img {
-    width: 3rem;
+  &__journalIcon,
+  &__moodIcon {
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__mood,

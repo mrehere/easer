@@ -1,16 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import "./Footer.scss";
-import journalIcon from "../../assets/icons/journal.svg";
-import moodIcon from "../../assets/icons/mood.svg";
 
 function Footer() {
   const routeStatus = location.pathname;
-  console.log(routeStatus);
+  const navigate = useNavigate();
+
+  const clickJournal = () => {
+    navigate("/journal");
+  };
+
+  const clickMood = () => {
+    navigate("/mood");
+  };
+
   return (
     <footer className="footer">
       <div className="footer__journalContainer">
         <svg
+          onClick={() => clickJournal()}
           className="footer__journalIcon"
-          // id={routeStatus === "/journal" ? "journalPage" : ""}
           xmlns="http://www.w3.org/2000/svg"
           height="48px"
           viewBox="0 -960 960 960"
@@ -31,6 +39,8 @@ function Footer() {
 
       <div className="footer__moodContainer">
         <svg
+          onClick={() => clickMood()}
+          className="footer__moodIcon"
           xmlns="http://www.w3.org/2000/svg"
           height="48px"
           viewBox="0 -960 960 960"
