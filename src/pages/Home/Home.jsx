@@ -1,4 +1,5 @@
 import Header from "../../Components/Header/Header.jsx";
+import Footer from "../../Components/Footer/Footer.jsx";
 import "./Home.scss";
 function Home() {
   return (
@@ -55,6 +56,7 @@ function Home() {
             <button className="home__cancel">cancel</button>
           </div>
         </form>
+        <Footer />
       </main>
     </>
   );
