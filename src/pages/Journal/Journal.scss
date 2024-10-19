@@ -24,11 +24,15 @@
     margin-bottom: 1rem;
   }
 
+  &__cardContainer {
+    margin-bottom: 1rem;
+  }
+
   &__entryDate {
     color: $charcoal;
     margin-bottom: 0.5rem;
   }
-  &__cardContainer {
+  &__card {
     @include flex(100%, column, unset, center);
     background-color: $lavender;
     padding: 1rem;

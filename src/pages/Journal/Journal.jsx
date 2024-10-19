@@ -8,6 +8,25 @@ import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 
 function Journal() {
+  const journal = [
+    {
+      userId: "12345",
+      entryId: "001",
+      title: "Productive Day at Work",
+      entryJournal:
+        "Today, I felt extremely productive and was able to finish several tasks ahead of schedule. I feel accomplished and motivated for the rest of the week.",
+      createdAt: 1729063500000,
+    },
+    {
+      userId: "12345",
+      entryId: "002",
+      title: "Afternoon Walk in the Park",
+      entryJournal:
+        "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
+      createdAt: 1729150800000,
+    },
+  ];
+
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
@@ -31,25 +50,27 @@ function Journal() {
 
         <section className="journal__history">
           <p className="journal__historyTitle">Previous Journal Entries</p>
-          <p className="journal__entryDate">
-            {" "}
-            Journaled on: Thursday, October 15, 2024
-          </p>
-          <div className="journal__cardContainer">
-            <h4 className="journal__cardTitle">Journal Entry Title</h4>
-            <p className="journal__text">
-              This is a test journal to see if the text wraps around and it
-              should.
-            </p>
-            <div className="journal__actions">
-              <button className="journal__edit">
-                <img src={editIcon} alt="Edit" />
-              </button>
-              <button className="journal__delete">
-                <img src={deleteIcon} alt="Delete" />
-              </button>
-            </div>
-          </div>
+          {journal.map((journal) => {
+            return (
+              <div className="journal__cardContainer" key={journal.entryId}>
+                <p className="journal__entryDate">
+                  Journaled on: {formatDate(journal.createdAt)}
+                </p>
+                <div className="journal__card">
+                  <h4 className="journal__cardTitle">{journal.title}</h4>
+                  <p className="journal__text">{journal.entryJournal}</p>
+                  <div className="journal__actions">
+                    <button className="journal__edit">
+                      <img src={editIcon} alt="Edit" />
+                    </button>
+                    <button className="journal__delete">
+                      <img src={deleteIcon} alt="Delete" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </section>
         <Footer />
       </main>
