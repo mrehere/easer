@@ -311,3 +311,5 @@ End of Week 2: All features refined, tested, and deployed with complete document
 -establish the database in MySQL with primary userID key, with relation between Mood, and journal entry
 
 -give an emoji picker to chose mood
+
+- add sort/search options for the journal
