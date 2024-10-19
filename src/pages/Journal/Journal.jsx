@@ -1,5 +1,6 @@
 import "./Journal.scss";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 import JournalBox from "../../Components/JournalBox/JournalBox.jsx";
@@ -26,10 +27,32 @@ function Journal() {
       createdAt: 1729150800000,
     },
   ];
+  const [journalEntries, setJournalEntries] = useState();
+  const [journalLoading, setJournalLoading] = useState(false);
+  const url = import.meta.env.VITE_URL;
+
+  const fetchJournals = async () => {
+    setJournalLoading(true);
+    try {
+      const response = await axios.get(`${url}/journal`);
+      setJournalEntries(response.data);
+      setJournalLoading(false);
+    } catch (error) {
+      console.error(`Couldn't retrieve journal entries`, error);
+      setJournalLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchJournals();
+  }, []);
+
+  // fetchJournals();
 
   const sortedJournal = journal.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
+
   // ------------------sort the journal entries--------------------
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -42,6 +65,11 @@ function Journal() {
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
 
+  // if (!journalLoading) {
+  //   <h1>Please stand by, Journal Entries are loading....</h1>;
+
+  //   return;
+  // }
   return (
     <>
       <main className="journal">
