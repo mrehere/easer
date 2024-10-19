@@ -1,5 +1,6 @@
 import Header from "../../Components/Header/Header.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
+import JournalBox from "../../Components/JournalBox/JournalBox.jsx";
 import "./Home.scss";
 function Home() {
   return (
@@ -43,19 +44,7 @@ function Home() {
           </div>
         </section>
 
-        <form className="home__journalContainer">
-          <p className="home__moodHeader">How are you feeling today?</p>
-          <textarea
-            type="text"
-            placeholder="enter your feelings!"
-            className="home__journal"
-          ></textarea>
-
-          <div className="home__buttonContainer">
-            <button className="home__preserve">preserve!</button>
-            <button className="home__cancel">cancel</button>
-          </div>
-        </form>
+        <JournalBox />
         <Footer />
       </main>
     </>
