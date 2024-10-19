@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.journal {
+  &__dateContainer {
+    @include flex(unset, row, center, center);
+  }
+  &__date {
+    color: $charcoal;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+}
