@@ -98,79 +98,137 @@ createdAt: Date and time when the mood entry was recorded
 
 ### Endpoints
 
---Journal Entry Endpoints--
-
-POST /api/journal
-Description: Create a new journal entry.
-Parameters: entryText (string, required)
-{
-"message": "Journal entry created successfully.",
-"entryId": "67890",
-"createdAt": "2024-10-15T12:00:00Z"
-}
+----------------Journal Entry Endpoints----------------
 
 GET /api/journal
 
 Description: Retrieve all journal entries for a user.
 [
 {
-"entryId": "67890",
-"entryText": "Today was a good day.",
-"createdAt": "2024-10-15T12:00:00Z"
+"userId": "12345",
+"entryId": "001",
+"title": "Productive Day at Work",
+"entryJournal": "Today, I felt extremely productive and was able to finish several tasks ahead of schedule. I feel accomplished and motivated for the rest of the week.",
+"createdAt": 1729063500000
 },
 {
-"entryId": "67891",
-"entryText": "Learned something new today.",
-"createdAt": "2024-10-14T12:00:00Z"
+"userId": "12345",
+"entryId": "002",
+"title": "Afternoon Walk in the Park",
+"entryJournal": "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
+"createdAt": 1729150800000
 }
 ]
 
-DELETE /api/journal/
+POST /api/journal
+Description: Create a new journal entry.
+
+Post body:
+
+{
+"userId": 12345,
+"title": optional
+"entryJournal": "This one is for example journal !"
+
+}
+
+Response body:
+
+{
+"message": "Journal entry added successfully.",
+"newJournal": {
+"userId": 12345,
+"entryId": "82816d15-2562-418b-ae9e-501227e568ab",
+"title": "unknown-title",
+"entryJournal": "This one is for example journal !",
+"createdAt": 1729348739864
+}
+}
+
+DELETE /api/journal/:entryId
 
 Description: Delete a specific journal entry.
 Parameters:
 entryId (string, required)
 
+Response body:
+
 {
 "message": "Journal entry deleted successfully."
 }
 
---Mood Entry Endpoints--
-POST /api/mood
+UPDATE /api/journal/:entryId
 
-Description: Create a new mood entry.
-Parameters: moodRating (integer, required; e.g., 1-5)
+Description: Update a specific journal entry.
+Parameters:
+entryId (string, required)
+
+Update body:
+
 {
-"message": "Mood entry recorded successfully.",
-"moodId": "54321",
-"createdAt": "2024-10-15T12:00:00Z"
+
+"title": (optional),
+"entryJournal": (optional)
+
 }
 
+Response body:
+{
+"message": "Journal entry updated successfully.",
+"updatedJournal": {
+"userId": "12345",
+"entryId": "7b87e9f8-a2a5-477d-a679-8772a514f784",
+"title": "Teee",
+"entryJournal": "hello how about superman",
+"createdAt": 1729297471007,
+"updatedAt": 1729298202655
+}
+}
+
+----------------Mood Entry Endpoints----------------
 GET /api/mood
 
 Description: Retrieve all mood entries for a user.
 
+Response body:
 [
 {
-"moodId": "54321",
-"moodRating": 4,
-"createdAt": "2024-10-15T12:00:00Z"
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content",
+"createdAt": 1727962226189
 },
 {
-"moodId": "54322",
-"moodRating": 3,
-"createdAt": "2024-10-14T12:00:00Z"
-}
+"userId": "12345",
+"moodId": "m1",
+"moodName": "joyful",
+"createdAt": 1729171826189
+},
+...
 ]
 
-DELETE /api/mood/
+POST /api/mood
 
-Description: Delete a specific mood entry.
-Parameters:
-moodId (string, required)
+Description: Create a new mood entry.
+Parameters: entryId (string, required)
+
+Post body:
 
 {
-"message": "Mood entry deleted successfully."
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content"
+}
+
+Response body:
+{
+"message": "Mood added successfully.",
+"newMood": {
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content",
+"createdAt": 1729348064921
+}
 }
 
 ## Roadmap
