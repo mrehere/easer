@@ -4,6 +4,11 @@ function JournalBox() {
     <>
       <form className="journal__journalContainer">
         <p className="journal__journalHeader">How are you feeling today?</p>
+        <input
+          className="journal__title"
+          type="text"
+          placeholder="give the feelings a name?"
+        ></input>
         <textarea
           type="text"
           placeholder="enter your feelings!"
