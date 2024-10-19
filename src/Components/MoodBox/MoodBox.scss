@@ -1,0 +1,88 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.mood {
+  // --------------mood---------------
+  &__moodContainer {
+    @include flex(unset, column, center, center);
+    margin: 2rem 2rem 1rem 2rem;
+  }
+  &__moodHeader {
+    color: $charcoal;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  &__moodSelector {
+    @include flex(100%, row, center, space-evenly);
+    background-color: $neutral;
+    height: 3rem;
+
+    border-radius: 0.5rem;
+  }
+
+  &__joyful,
+  &__content,
+  &__confused,
+  &__angry,
+  &__crying {
+    font-size: 1.5rem;
+    @include flex(unset, column, center, center);
+    transition: transform 0.3s ease;
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-10px);
+    }
+    &:active {
+      transform: translateY(-10px);
+    }
+  }
+
+  &__joyfulText,
+  &__contentText,
+  &__confusedText,
+  &__angryText,
+  &__cryingText {
+    display: none;
+    opacity: none;
+  }
+
+  &__joyful:hover &__joyfulText,
+  &__content:hover .home__contentText,
+  &__confused:hover .home__confusedText,
+  &__angry:hover .home__angryText,
+  &__crying:hover .home__cryingText {
+    display: block;
+    opacity: 1;
+    font-size: 0.75rem;
+    color: $charcoal;
+    font-weight: bold;
+  }
+  // --------------------buttons ----------------------
+
+  &__buttonContainer {
+    @include flex(100%, row, center, space-between);
+    margin: 1rem 0;
+  }
+
+  &__preserve,
+  &__cancel {
+    border-radius: 0.625rem;
+    font-weight: bold;
+    color: $charcoal;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  &__preserve {
+    background-color: $mint;
+    &:hover {
+      background-color: darken($mint, 10%);
+    }
+  }
+  &__cancel {
+    background-color: $coral;
+    &:hover {
+      background-color: darken($coral, 10%);
+    }
+  }
+}
