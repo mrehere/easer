@@ -27,6 +27,10 @@ function Journal() {
     },
   ];
 
+  const sortedJournal = journal.sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
+  // ------------------sort the journal entries--------------------
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
@@ -50,7 +54,7 @@ function Journal() {
 
         <section className="journal__history">
           <p className="journal__historyTitle">Previous Journal Entries</p>
-          {journal.map((journal) => {
+          {sortedJournal.map((journal) => {
             return (
               <div className="journal__cardContainer" key={journal.entryId}>
                 <p className="journal__entryDate">

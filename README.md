@@ -313,3 +313,4 @@ End of Week 2: All features refined, tested, and deployed with complete document
 -give an emoji picker to chose mood
 
 - add sort/search options for the journal
+- add time on journal dates

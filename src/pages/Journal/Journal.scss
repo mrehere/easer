@@ -31,6 +31,7 @@
   &__entryDate {
     color: $charcoal;
     margin-bottom: 0.5rem;
+    font-size: 0.75rem;
   }
   &__card {
     @include flex(100%, column, unset, center);
