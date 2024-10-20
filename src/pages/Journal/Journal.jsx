@@ -9,34 +9,15 @@ import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 
 function Journal() {
-  const journal = [
-    {
-      userId: "12345",
-      entryId: "001",
-      title: "Productive Day at Work",
-      entryJournal:
-        "Today, I felt extremely productive and was able to finish several tasks ahead of schedule. I feel accomplished and motivated for the rest of the week.",
-      createdAt: 1729063500000,
-    },
-    {
-      userId: "12345",
-      entryId: "002",
-      title: "Afternoon Walk in the Park",
-      entryJournal:
-        "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
-      createdAt: 1729150800000,
-    },
-  ];
   const [journalEntries, setJournalEntries] = useState();
   const [journalLoading, setJournalLoading] = useState(false);
   const url = import.meta.env.VITE_URL;
 
   const fetchJournals = async () => {
-    setJournalLoading(true);
     try {
       const response = await axios.get(`${url}/journal`);
       setJournalEntries(response.data);
-      setJournalLoading(false);
+      setJournalLoading(true);
     } catch (error) {
       console.error(`Couldn't retrieve journal entries`, error);
       setJournalLoading(false);
@@ -47,9 +28,13 @@ function Journal() {
     fetchJournals();
   }, []);
 
-  // fetchJournals();
+  //added right after call fetchJournals() for error handling
+  if (!journalLoading) {
+    <h1>Please stand by, Journal Entries are loading....</h1>;
 
-  const sortedJournal = journal.sort((a, b) => {
+    return;
+  }
+  const sortedJournal = journalEntries.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
 
@@ -65,11 +50,6 @@ function Journal() {
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
 
-  // if (!journalLoading) {
-  //   <h1>Please stand by, Journal Entries are loading....</h1>;
-
-  //   return;
-  // }
   return (
     <>
       <main className="journal">
