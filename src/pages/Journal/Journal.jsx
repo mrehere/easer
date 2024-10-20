@@ -31,7 +31,7 @@ function Journal() {
     }
   };
 
-  //updaing UI for new post and updates and deletes of journal entries
+  //updaing UI for new post, updates and deletes of journal entries
   const addJournalEntry = (newEntry) => {
     setJournalEntries((prevEntries) => [newEntry, ...prevEntries]);
   };
@@ -44,6 +44,14 @@ function Journal() {
           ? updatedEntry
           : currentEntry;
       });
+    });
+  };
+
+  const deleteJournalEntry = (deletedEntryId) => {
+    setJournalEntries((prevEntries) => {
+      return prevEntries.filter(
+        (currentEntry) => currentEntry.entryId !== deletedEntryId
+      );
     });
   };
 
@@ -143,7 +151,11 @@ function Journal() {
                 onClose={closeModal}
               />
             ) : (
-              <DeleteJournal journal={currentJournal} onClose={closeModal} />
+              <DeleteJournal
+                deletedJournalEntry={deleteJournalEntry}
+                journal={currentJournal}
+                onClose={closeModal}
+              />
             )}
           </div>
         )}

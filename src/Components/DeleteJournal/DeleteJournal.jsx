@@ -1,8 +1,22 @@
 import "./DeleteJournal.scss";
+import axios from "axios";
 
-import React from "react";
+function DeleteJournal({ journal, onClose, deletedJournalEntry }) {
+  const url = import.meta.env.VITE_URL;
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(`${url}/journal/${journal.entryId}`);
+      console.log("Journal entry saved", response.data);
 
-function DeleteJournal({ journal, onClose }) {
+      //passing new posted journal for UI update
+      deletedJournalEntry(journal.entryId);
+    } catch (error) {
+      console.error("Error saving journal entry:", error);
+    }
+
+    onClose();
+  };
+
   return (
     <>
       <section className="deleteJournal">
@@ -11,7 +25,11 @@ function DeleteJournal({ journal, onClose }) {
         </h2>
 
         <div className="deleteJournal__buttonContainer">
-          <button type="submit" className="deleteJournal__delete">
+          <button
+            onClick={() => handleDelete()}
+            type="submit"
+            className="deleteJournal__delete"
+          >
             delete!
           </button>
           <button onClick={onClose} className="deleteJournal__cancel">
