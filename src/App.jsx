@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/mood" element={<Mood />} />
-          <Route path="journal/edit/:id" element={<EditJournal />} />
+          {/* <Route path="journal/edit/:id" element={<EditJournal />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

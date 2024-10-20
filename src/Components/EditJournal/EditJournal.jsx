@@ -3,13 +3,13 @@ import backIcon from "../../assets/icons/back.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function EditJournal() {
-  // Dummy data for now, replace this later with dynamic data
-  const journal = {
-    title: "A Day at the Beach",
-    entryJournal:
-      "It was a sunny day, and I enjoyed the fresh air and the calming waves of the ocean.",
-  };
+function EditJournal({ onClose, journal }) {
+  // // Dummy data for now, replace this later with dynamic data
+  // const journal = {
+  //   title: "A Day at the Beach",
+  //   entryJournal:
+  //     "It was a sunny day, and I enjoyed the fresh air and the calming waves of the ocean.",
+  // };
 
   const [title, setTitle] = useState(journal.title);
   const [entryJournal, setEntryJournal] = useState(journal.entryJournal);
@@ -22,7 +22,7 @@ function EditJournal() {
     <>
       <form className="editJournal">
         <img
-          onClick={() => onGoBack()}
+          onClick={onClose}
           className="editJournal__back"
           src={backIcon}
           alt="back-icon"
@@ -46,7 +46,7 @@ function EditJournal() {
           <button type="submit" className="editJournal__preserve">
             update
           </button>
-          <button onClick={() => onGoBack()} className="editJournal__cancel">
+          <button onClick={onClose} className="editJournal__cancel">
             cancel
           </button>
         </div>

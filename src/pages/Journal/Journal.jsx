@@ -5,12 +5,17 @@ import Header from "../../Components/Header/Header.jsx";
 import Footer from "../../Components/Footer/Footer.jsx";
 import JournalBox from "../../Components/JournalBox/JournalBox.jsx";
 
+import EditJournal from "../../Components/EditJournal/EditJournal.jsx";
+
 import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 
 function Journal() {
   const [journalEntries, setJournalEntries] = useState();
   const [journalLoading, setJournalLoading] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const [currentJournal, setCurrentJournal] = useState(null);
   const url = import.meta.env.VITE_URL;
 
   const fetchJournals = async () => {
@@ -51,6 +56,22 @@ function Journal() {
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
 
+  const openModal = (journal) => {
+    setModal(true);
+    setCurrentJournal(journal);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+    setCurrentJournal(null);
+  };
+
+  const handleOverlayClick = (event) => {
+    // Closes the modal when clicking on the overlay (outside the modal content)
+    if (event.target.classList.contains("journal__modal")) {
+      closeModal();
+    }
+  };
   return (
     <>
       <main className="journal">
@@ -73,7 +94,10 @@ function Journal() {
                   <h4 className="journal__cardTitle">{journal.title}</h4>
                   <p className="journal__text">{journal.entryJournal}</p>
                   <div className="journal__actions">
-                    <button className="journal__edit">
+                    <button
+                      onClick={() => openModal(journal)}
+                      className="journal__edit"
+                    >
                       <img src={editIcon} alt="Edit" />
                     </button>
                     <button className="journal__delete">
@@ -86,6 +110,12 @@ function Journal() {
           })}
         </section>
         <Footer />
+
+        {modal && (
+          <div onClick={handleOverlayClick} className="journal__modal">
+            <EditJournal journal={currentJournal} onClose={closeModal} />
+          </div>
+        )}
       </main>
     </>
   );
