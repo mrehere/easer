@@ -4,18 +4,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function EditJournal({ onClose, journal }) {
-  // // Dummy data for now, replace this later with dynamic data
-  // const journal = {
-  //   title: "A Day at the Beach",
-  //   entryJournal:
-  //     "It was a sunny day, and I enjoyed the fresh air and the calming waves of the ocean.",
-  // };
-
   const [title, setTitle] = useState(journal.title);
   const [entryJournal, setEntryJournal] = useState(journal.entryJournal);
   const navigate = useNavigate();
   const onGoBack = () => {
     navigate("/journal");
+  };
+  console.log(journal.entryId);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onGoBack();
   };
 
   return (
@@ -43,7 +42,11 @@ function EditJournal({ onClose, journal }) {
         ></textarea>
 
         <div className="editJournal__buttonContainer">
-          <button type="submit" className="editJournal__preserve">
+          <button
+            onSubmit={handleSubmit}
+            type="submit"
+            className="editJournal__preserve"
+          >
             update
           </button>
           <button onClick={onClose} className="editJournal__cancel">
