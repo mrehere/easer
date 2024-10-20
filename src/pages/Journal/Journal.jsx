@@ -9,12 +9,14 @@ import EditJournal from "../../Components/EditJournal/EditJournal.jsx";
 
 import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
+import DeleteJournal from "../../Components/DeleteJournal/DeleteJournal.jsx";
 
 function Journal() {
   const [journalEntries, setJournalEntries] = useState();
   const [journalLoading, setJournalLoading] = useState(false);
 
   const [modal, setModal] = useState(false);
+  const [modalAction, setModalAction] = useState(null);
   const [currentJournal, setCurrentJournal] = useState(null);
   const url = import.meta.env.VITE_URL;
 
@@ -36,9 +38,11 @@ function Journal() {
 
   const updateJournalEntry = (updatedEntry) => {
     setJournalEntries((prevEntries) => {
-      return prevEntries.map((entry) => {
+      return prevEntries.map((currentEntry) => {
         // If the entry ID matches, return the updated entry; otherwise, return the current entry
-        return entry.entryId === updatedEntry.entryId ? updatedEntry : entry;
+        return currentEntry.entryId === updatedEntry.entryId
+          ? updatedEntry
+          : currentEntry;
       });
     });
   };
@@ -71,9 +75,10 @@ function Journal() {
   };
 
   // modal opener and closers
-  const openModal = (journal) => {
+  const openModal = (journal, action) => {
     setModal(true);
     setCurrentJournal(journal);
+    setModalAction(action);
   };
 
   const closeModal = () => {
@@ -110,12 +115,15 @@ function Journal() {
                   <p className="journal__text">{journal.entryJournal}</p>
                   <div className="journal__actions">
                     <button
-                      onClick={() => openModal(journal)}
+                      onClick={() => openModal(journal, "edit")}
                       className="journal__edit"
                     >
                       <img src={editIcon} alt="Edit" />
                     </button>
-                    <button className="journal__delete">
+                    <button
+                      onClick={() => openModal(journal, "delete")}
+                      className="journal__delete"
+                    >
                       <img src={deleteIcon} alt="Delete" />
                     </button>
                   </div>
@@ -128,11 +136,15 @@ function Journal() {
 
         {modal && (
           <div onClick={handleOverlayClick} className="journal__modal">
-            <EditJournal
-              updateJournalEntry={updateJournalEntry}
-              journal={currentJournal}
-              onClose={closeModal}
-            />
+            {modalAction === "edit" ? (
+              <EditJournal
+                updateJournalEntry={updateJournalEntry}
+                journal={currentJournal}
+                onClose={closeModal}
+              />
+            ) : (
+              <DeleteJournal journal={currentJournal} onClose={closeModal} />
+            )}
           </div>
         )}
       </main>

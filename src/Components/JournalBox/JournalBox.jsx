@@ -48,7 +48,7 @@ function JournalBox({ addJournalEntry }) {
           onChange={(e) => setTitle(e.target.value)}
           className="journal__title"
           type="text"
-          placeholder="give the feelings a name?"
+          placeholder="name your feelings?"
         ></input>
         <textarea
           value={journal}

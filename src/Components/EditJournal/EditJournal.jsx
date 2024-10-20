@@ -51,7 +51,7 @@ function EditJournal({ onClose, journal, updateJournalEntry }) {
           onChange={(e) => setTitle(e.target.value)}
           className="editJournal__title"
           type="text"
-          placeholder="Learning JavaScript"
+          placeholder="Name your feelings?"
         ></input>
         <textarea
           value={entryJournal}
