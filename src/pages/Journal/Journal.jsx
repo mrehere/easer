@@ -34,6 +34,7 @@ function Journal() {
 
     return;
   }
+
   const sortedJournal = journalEntries.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
