@@ -1,21 +1,41 @@
 import { useState } from "react";
+import axios from "axios";
 import "./JournalBox.scss";
+import { useNavigate } from "react-router-dom";
 
-function JournalBox() {
+function JournalBox({ addJournalEntry }) {
   const [title, setTitle] = useState("");
   const [journal, setJournal] = useState("");
+  const navigate = useNavigate();
   const userId = "12345";
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const entry = {
-      userId: userId,
-      title: title,
-      entryJournal: journal,
-    };
 
-    console.log(entry);
-    setTitle("");
-    setJournal("");
+  const url = import.meta.env.VITE_URL;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (userId && title && journal) {
+      const entry = {
+        userId: userId,
+        title: title,
+        entryJournal: journal,
+      };
+
+      try {
+        const response = await axios.post(`${url}/journal`, entry);
+        console.log("Journal entry saved", response.data);
+        addJournalEntry(response.data.newJournal);
+      } catch (error) {
+        console.error("Error saving journal entry:", error);
+      }
+
+      setTitle("");
+      setJournal("");
+      navigate("/journal");
+    } else {
+      //stoping from posting if form's empty
+      console.log("please enter value for the form");
+      return;
+    }
   };
   return (
     <>

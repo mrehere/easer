@@ -29,6 +29,11 @@ function Journal() {
     }
   };
 
+  //creating an updated copy of journal entries, for new post journals
+  const addJournalEntry = (newEntry) => {
+    setJournalEntries((prevEntries) => [newEntry, ...prevEntries]);
+  };
+
   useEffect(() => {
     fetchJournals();
   }, []);
@@ -56,6 +61,7 @@ function Journal() {
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
 
+  // modal opener and closers
   const openModal = (journal) => {
     setModal(true);
     setCurrentJournal(journal);
@@ -80,7 +86,7 @@ function Journal() {
           <p className="journal__date">{formatDate(Date.now())}</p>
         </div>
 
-        <JournalBox />
+        <JournalBox addJournalEntry={addJournalEntry} />
 
         <section className="journal__history">
           <p className="journal__historyTitle">Previous Journal Entries</p>
