@@ -29,9 +29,18 @@ function Journal() {
     }
   };
 
-  //creating an updated copy of journal entries, for new post journals
+  //updaing UI for new post and updates and deletes of journal entries
   const addJournalEntry = (newEntry) => {
     setJournalEntries((prevEntries) => [newEntry, ...prevEntries]);
+  };
+
+  const updateJournalEntry = (updatedEntry) => {
+    setJournalEntries((prevEntries) => {
+      return prevEntries.map((entry) => {
+        // If the entry ID matches, return the updated entry; otherwise, return the current entry
+        return entry.entryId === updatedEntry.entryId ? updatedEntry : entry;
+      });
+    });
   };
 
   useEffect(() => {
@@ -119,7 +128,11 @@ function Journal() {
 
         {modal && (
           <div onClick={handleOverlayClick} className="journal__modal">
-            <EditJournal journal={currentJournal} onClose={closeModal} />
+            <EditJournal
+              updateJournalEntry={updateJournalEntry}
+              journal={currentJournal}
+              onClose={closeModal}
+            />
           </div>
         )}
       </main>

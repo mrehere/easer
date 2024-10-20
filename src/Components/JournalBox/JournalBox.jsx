@@ -23,6 +23,8 @@ function JournalBox({ addJournalEntry }) {
       try {
         const response = await axios.post(`${url}/journal`, entry);
         console.log("Journal entry saved", response.data);
+
+        //passing new posted journal for UI update
         addJournalEntry(response.data.newJournal);
       } catch (error) {
         console.error("Error saving journal entry:", error);

@@ -2,24 +2,44 @@ import "./EditJournal.scss";
 import backIcon from "../../assets/icons/back.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function EditJournal({ onClose, journal }) {
+function EditJournal({ onClose, journal, updateJournalEntry }) {
   const [title, setTitle] = useState(journal.title);
   const [entryJournal, setEntryJournal] = useState(journal.entryJournal);
   const navigate = useNavigate();
   const onGoBack = () => {
     navigate("/journal");
   };
-  console.log(journal.entryId);
 
-  const handleSubmit = (e) => {
+  const url = import.meta.env.VITE_URL;
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onGoBack();
+
+    const entry = {
+      title: title,
+      entryJournal: entryJournal,
+    };
+
+    try {
+      const response = await axios.put(
+        `${url}/journal/${journal.entryId}`,
+        entry
+      );
+      console.log("Journal entry saved", response.data);
+
+      //passing new posted journal for UI update
+      updateJournalEntry(response.data.updatedJournal);
+    } catch (error) {
+      console.error("Error saving journal entry:", error);
+    }
+
+    onClose();
   };
 
   return (
     <>
-      <form className="editJournal">
+      <form onSubmit={handleSubmit} className="editJournal">
         <img
           onClick={onClose}
           className="editJournal__back"
@@ -42,11 +62,7 @@ function EditJournal({ onClose, journal }) {
         ></textarea>
 
         <div className="editJournal__buttonContainer">
-          <button
-            onSubmit={handleSubmit}
-            type="submit"
-            className="editJournal__preserve"
-          >
+          <button type="submit" className="editJournal__preserve">
             update
           </button>
           <button onClick={onClose} className="editJournal__cancel">
