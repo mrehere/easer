@@ -31,11 +31,41 @@
     outline: none;
     background-color: $lavender;
     color: $charcoal;
-    // padding: 1rem 0 1rem 0;
-    // font-weight: bold;
+
     font-size: 1.15rem;
+    resize: none;
     &::placeholder {
       color: $charcoal;
+    }
+  }
+
+  //button
+  &__buttonContainer {
+    @include flex(100%, row, center, right);
+    margin: 0.5rem 0 0 0;
+  }
+
+  &__preserve,
+  &__cancel {
+    border-radius: 0.625rem;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  &__preserve {
+    background-color: lighten($indigoBlue, 10%);
+    margin-right: 1rem;
+    &:hover {
+      background-color: $indigoBlue;
+    }
+  }
+  &__cancel {
+    background-color: lighten($coral, 5%);
+    &:hover {
+      background-color: darken($coral, 10%);
     }
   }
 }
