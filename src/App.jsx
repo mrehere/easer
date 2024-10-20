@@ -7,8 +7,6 @@ import Journal from "./pages/Journal/Journal.jsx";
 import Mood from "./pages/Mood/Mood.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
-import DeleteJournal from "./Components/DeleteJournal/DeleteJournal.jsx";
-
 function App() {
   return (
     <>
@@ -17,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/mood" element={<Mood />} />
-          <Route path="/delete" element={<DeleteJournal />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

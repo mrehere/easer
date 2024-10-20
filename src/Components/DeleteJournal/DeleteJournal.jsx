@@ -14,7 +14,9 @@ function DeleteJournal({ journal, onClose }) {
           <button type="submit" className="deleteJournal__delete">
             delete!
           </button>
-          <button className="deleteJournal__cancel">cancel</button>
+          <button onClick={onClose} className="deleteJournal__cancel">
+            cancel
+          </button>
         </div>
       </section>
     </>

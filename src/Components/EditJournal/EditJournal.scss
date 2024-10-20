@@ -42,8 +42,16 @@
 
   //button
   &__buttonContainer {
-    @include flex(100%, row, center, right);
+    @include flex(100%, row, center, center);
     margin: 0.5rem 0 0 0;
+
+    @include tablet {
+      justify-content: right;
+    }
+
+    @include desktop {
+      justify-content: right;
+    }
   }
 
   &__preserve,

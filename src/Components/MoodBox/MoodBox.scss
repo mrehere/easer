@@ -59,8 +59,16 @@
   // --------------------buttons ----------------------
 
   &__buttonContainer {
-    @include flex(100%, row, center, space-between);
+    @include flex(100%, row, center, center);
     margin: 1rem 0;
+
+    @include tablet {
+      justify-content: right;
+    }
+
+    @include desktop {
+      justify-content: right;
+    }
   }
 
   &__preserve,
@@ -75,6 +83,7 @@
   }
   &__preserve {
     background-color: $mint;
+    margin-right: 1rem;
     &:hover {
       background-color: darken($mint, 10%);
     }

@@ -2,6 +2,7 @@
 @use "../../styles/partials/variables" as *;
 .deleteJournal {
   @include flex(100%, column, unset, center);
+  height: 15rem;
   background-color: $lavender;
   padding: 1rem;
   border-radius: 5px;
@@ -11,12 +12,23 @@
   &__disclaimer {
     color: $charcoal;
     font-weight: 600;
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: 1.15rem;
   }
 
   //button
   &__buttonContainer {
-    @include flex(100%, row, center, right);
+    @include flex(100%, row, center, center);
     margin: 0.5rem 0 0 0;
+
+    @include tablet {
+      justify-content: right;
+    }
+
+    @include desktop {
+      justify-content: right;
+    }
   }
 
   &__delete,
