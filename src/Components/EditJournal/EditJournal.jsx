@@ -1,16 +1,14 @@
 import "./EditJournal.scss";
 import backIcon from "../../assets/icons/back.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function EditJournal({ onClose, journal, updateJournalEntry }) {
   const [title, setTitle] = useState(journal.title);
   const [entryJournal, setEntryJournal] = useState(journal.entryJournal);
+
   const navigate = useNavigate();
-  const onGoBack = () => {
-    navigate("/journal");
-  };
 
   const url = import.meta.env.VITE_URL;
   const handleSubmit = async (e) => {
@@ -39,7 +37,7 @@ function EditJournal({ onClose, journal, updateJournalEntry }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="editJournal">
+      <form onSubmit={handleSubmit} className="editJournal ">
         <img
           onClick={onClose}
           className="editJournal__back"
@@ -65,7 +63,11 @@ function EditJournal({ onClose, journal, updateJournalEntry }) {
           <button type="submit" className="editJournal__preserve">
             update
           </button>
-          <button onClick={onClose} className="editJournal__cancel">
+          <button
+            // onClick={() => handleClose()}
+            onClick={onClose}
+            className="editJournal__cancel"
+          >
             cancel
           </button>
         </div>
