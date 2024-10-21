@@ -51,6 +51,11 @@ function MoodBox() {
       setPostCurrentMood("");
     }
   };
+
+  const handleCancel = () => {
+    setCurrentMood("");
+    setPostCurrentMood("");
+  };
   return (
     <>
       <section className="mood__moodContainer">
@@ -58,7 +63,9 @@ function MoodBox() {
         <div className="mood__moodSelector">
           <div
             onClick={() => handleMoodSelect("joyful")}
-            className="mood__joyful"
+            className={`mood__joyful ${
+              currentMood === "joyful" ? "mood__joyful--selected" : ""
+            }`}
           >
             😊
             <span className="mood__joyfulText">joyful</span>
@@ -66,14 +73,19 @@ function MoodBox() {
 
           <div
             onClick={() => handleMoodSelect("content")}
-            className="mood__content"
+            className={`mood__content ${
+              currentMood === "content" ? "mood__content--selected" : ""
+            }`}
           >
             🙂
             <span className="mood__contentText">content</span>
           </div>
+
           <div
             onClick={() => handleMoodSelect("confused")}
-            className="mood__confused"
+            className={`mood__confused ${
+              currentMood === "confused" ? "mood__confused--selected" : ""
+            }`}
           >
             😕
             <span className="mood__confusedText">confused</span>
@@ -81,14 +93,18 @@ function MoodBox() {
 
           <div
             onClick={() => handleMoodSelect("angry")}
-            className="mood__angry"
+            className={`mood__angry ${
+              currentMood === "angry" ? "mood__angry--selected" : ""
+            }`}
           >
             😠
             <span className="mood__angryText">angry</span>
           </div>
           <div
             onClick={() => handleMoodSelect("crying")}
-            className="mood__crying"
+            className={`mood__crying ${
+              currentMood === "crying" ? "mood__crying--selected" : ""
+            }`}
           >
             😢
             <span className="mood__cryingText">crying</span>
@@ -104,7 +120,14 @@ function MoodBox() {
           >
             preserve!
           </button>
-          <button className="mood__cancel">cancel</button>
+          <button
+            onClick={() => {
+              handleCancel();
+            }}
+            className="mood__cancel"
+          >
+            cancel
+          </button>
         </div>
       </section>
     </>

@@ -34,6 +34,13 @@
     &:active {
       transform: translateY(-10px);
     }
+
+    &--selected {
+      background-color: lighten($mint, 20%);
+      border: 2px solid $mint;
+      transform: translateY(-10px);
+      border-radius: 50%;
+    }
   }
 
   &__joyfulText,
