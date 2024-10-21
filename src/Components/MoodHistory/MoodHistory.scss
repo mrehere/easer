@@ -1,2 +1,33 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.moodHistory {
+  @include flex(unset, column, center, center);
+
+  &__title {
+    margin-top: 2rem;
+    color: #36474f;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    @include flex(unset, column, center, center);
+  }
+
+  &__date {
+    color: #36474f;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  &__mood {
+    font-size: 3rem;
+  }
+  &__name {
+    color: #36474f;
+    font-weight: bold;
+    margin: 0.25rem 0 0.5rem 0;
+  }
+}
