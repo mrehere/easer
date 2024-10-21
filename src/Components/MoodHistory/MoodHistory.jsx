@@ -47,14 +47,17 @@ function MoodHistory() {
       hour: "2-digit",
       minute: "2-digit",
     };
+
     return new Intl.DateTimeFormat("en-US", options).format(date);
   };
-
+  const sortedMood = moodEmoji.sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
   return (
     <section className="moodHistory">
       <h4 className="moodHistory__title">Mood History</h4>
 
-      {moodEmoji.map((mood) => {
+      {sortedMood.map((mood) => {
         return (
           <div className="moodHistory__container" key={mood.createdAt}>
             <p className="moodHistory__date">
