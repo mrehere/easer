@@ -36,6 +36,20 @@ function MoodHistory() {
   }));
 
   console.log(moodEmoji);
+
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+
   return (
     <section className="moodHistory">
       <h4 className="moodHistory__title">Mood History</h4>
@@ -43,7 +57,9 @@ function MoodHistory() {
       {moodEmoji.map((mood) => {
         return (
           <div className="moodHistory__container" key={mood.createdAt}>
-            <p className="moodHistory__date">Logged on: {mood.createdAt}</p>
+            <p className="moodHistory__date">
+              Logged on: {formatDate(mood.createdAt)}
+            </p>
             <p className="moodHistory__mood">{mood.emoji}</p>
             <p className="moodHistory__name">{mood.moodName}</p>
           </div>
