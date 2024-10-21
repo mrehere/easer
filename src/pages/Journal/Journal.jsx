@@ -66,11 +66,12 @@ function Journal() {
     return;
   }
 
+  // ------------------sort the journal entries--------------------
+
   const sortedJournal = journalEntries.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
 
-  // ------------------sort the journal entries--------------------
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
