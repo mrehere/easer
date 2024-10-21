@@ -28,10 +28,22 @@
     border: none;
     cursor: pointer;
     margin-right: 1rem;
+    border: 2px solid $charcoal;
 
     &:hover {
-      background-color: lighten($paleBlue, 10%);
+      background-color: lighten($lavender, 10%);
       transform: scale(1.05);
+    }
+
+    &--selected {
+      background-color: lighten($indigoBlue, 10%);
+      color: $neutral;
+      border: 2px solid darken($mint, 10%);
+
+      &:hover {
+        background-color: lighten($indigoBlue, 10%);
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -40,14 +52,25 @@
     border-radius: 0.625rem;
     font-weight: bold;
     font-size: 1rem;
-    background-color: $lavender;
+    background-color: $paleBlue;
     color: $charcoal;
-    border: none;
+    border: 2px solid $charcoal;
     cursor: pointer;
 
     &:hover {
       background-color: lighten($paleBlue, 10%);
       transform: scale(1.05);
+    }
+
+    &--selected {
+      background-color: $charcoal;
+      color: $neutral;
+      border: 2px solid lighten($paleBlue, 10%);
+
+      &:hover {
+        background-color: lighten($charcoal, 5%);
+        transform: scale(1.05);
+      }
     }
   }
 }

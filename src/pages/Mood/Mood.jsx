@@ -7,7 +7,7 @@ import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
 
 function Mood() {
-  const [moodSelection, setMoodSelection] = useState("");
+  const [moodSelection, setMoodSelection] = useState("history");
 
   const handleMoodSelect = (activeMood) => {
     setMoodSelection(activeMood);
@@ -34,13 +34,17 @@ function Mood() {
       <div className="mood__selector">
         <button
           onClick={() => handleMoodSelect("history")}
-          className="mood__history"
+          className={`mood__history ${
+            moodSelection === "history" ? "mood__history--selected" : ""
+          }`}
         >
           History
         </button>
         <button
           onClick={() => handleMoodSelect("analytics")}
-          className="mood__analytics"
+          className={`mood__analytics ${
+            moodSelection === "analytics" ? "mood__analytics--selected" : ""
+          }`}
         >
           Analytics
         </button>
