@@ -1,7 +1,30 @@
+import { useEffect, useState } from "react";
 import "./MoodHistory.scss";
+import axios from "axios";
 
 function MoodHistory() {
-  const moods = [
+  const [mood, setMood] = useState([]);
+  const [moodLoading, setMoodLoading] = useState(false);
+  const url = import.meta.env.VITE_URL;
+
+  const fetchMoods = async () => {
+    try {
+      const response = await axios.get(`${url}/mood`);
+      setMood(response.data);
+      setMoodLoading(true);
+    } catch (error) {
+      console.error("Error fetching moods", error);
+    }
+  };
+  useEffect(() => {
+    fetchMoods();
+  }, []);
+
+  if (!moodLoading) {
+    return <h1>Please standby, mood is Loading....</h1>;
+  }
+
+  const moody = [
     {
       userId: "12345",
       moodId: "m2",
@@ -30,12 +53,10 @@ function MoodHistory() {
     crying: "😢",
   };
 
-  const moodEmoji = moods.map((mood) => ({
+  const moodEmoji = mood.map((mood) => ({
     ...mood,
     emoji: moodMap[mood.moodName] || "❓",
   }));
-
-  console.log(moodEmoji);
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -46,6 +67,7 @@ function MoodHistory() {
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      second: "2-digit",
     };
 
     return new Intl.DateTimeFormat("en-US", options).format(date);
@@ -53,6 +75,7 @@ function MoodHistory() {
   const sortedMood = moodEmoji.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
+
   return (
     <section className="moodHistory">
       <h4 className="moodHistory__title">Mood History</h4>

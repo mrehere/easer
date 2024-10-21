@@ -19,35 +19,11 @@
   }
 
   &__history {
-    padding: 0.5rem 1rem;
-    border-radius: 0.625rem;
-    font-weight: bold;
-    font-size: 1rem;
-    background-color: $lavender;
-    color: $indigoBlue;
-    border: none;
-    cursor: pointer;
     margin-right: 1rem;
-    border: 2px solid $charcoal;
-
-    &:hover {
-      background-color: lighten($lavender, 10%);
-      transform: scale(1.05);
-    }
-
-    &--selected {
-      background-color: lighten($indigoBlue, 10%);
-      color: $neutral;
-      border: 2px solid darken($mint, 10%);
-
-      &:hover {
-        background-color: lighten($indigoBlue, 10%);
-        transform: scale(1.05);
-      }
-    }
   }
 
-  &__analytics {
+  &__analytics,
+  &__history {
     padding: 0.5rem 1rem;
     border-radius: 0.625rem;
     font-weight: bold;
@@ -58,17 +34,17 @@
     cursor: pointer;
 
     &:hover {
-      background-color: lighten($paleBlue, 10%);
+      background-color: darken($paleBlue, 5%);
       transform: scale(1.05);
     }
 
     &--selected {
-      background-color: $charcoal;
-      color: $neutral;
-      border: 2px solid lighten($paleBlue, 10%);
+      background-color: darken($charcoal, 5%);
+      color: darken($paleBlue, 20%);
+      border: 2px solid darken($paleBlue, 20%);
 
       &:hover {
-        background-color: lighten($charcoal, 5%);
+        background-color: darken($charcoal, 5%);
         transform: scale(1.05);
       }
     }
