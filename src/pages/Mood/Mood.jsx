@@ -1,9 +1,18 @@
 import "./Mood.scss";
 import Header from "../../Components/Header/Header";
 import MoodBox from "../../Components/MoodBox/MoodBox";
+import MoodHistory from "../../Components/MoodHistory/MoodHistory";
+import MoodAnalytics from "../../Components/MoodAnalytics/MoodAnalytics";
 import Footer from "../../Components/Footer/Footer";
+import { useState } from "react";
 
 function Mood() {
+  const [moodSelection, setMoodSelection] = useState("");
+
+  const handleMoodSelect = (activeMood) => {
+    setMoodSelection(activeMood);
+  };
+
   // date formatting
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -22,6 +31,21 @@ function Mood() {
         <p className="mood__date">{formatDate(Date.now())}</p>
       </div>
       <MoodBox />
+      <div className="mood__selector">
+        <button
+          onClick={() => handleMoodSelect("history")}
+          className="mood__history"
+        >
+          History
+        </button>
+        <button
+          onClick={() => handleMoodSelect("analytics")}
+          className="mood__analytics"
+        >
+          Analytics
+        </button>
+      </div>
+      {moodSelection === "analytics" ? <MoodAnalytics /> : <MoodHistory />}
       <Footer />
     </main>
   );
