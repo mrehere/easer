@@ -3,6 +3,7 @@ import axios from "axios";
 import "./MoodBox.scss";
 
 function MoodBox() {
+  const userId = "12345";
   const moodRef = [
     {
       moodId: "m1",
@@ -28,6 +29,7 @@ function MoodBox() {
 
   const [currentMood, setCurrentMood] = useState("");
   const [postCurrentMood, setPostCurrentMood] = useState("");
+  const url = import.meta.env.VITE_URL;
 
   // -------handling the mood selection-------
   const handleMoodSelect = (mood) => {
@@ -44,9 +46,19 @@ function MoodBox() {
 
   // ------- handle submit -------
 
-  const handlePreserve = () => {
-    if (postCurrentMood) {
-      console.log(postCurrentMood);
+  // -- inserting the userId in the post object
+  const postMoodWithId = Object.assign({}, postCurrentMood, { userId });
+
+  const handlePreserve = async () => {
+    if (postMoodWithId) {
+      console.log(postMoodWithId);
+      try {
+        const response = await axios.post(`${url}/mood`, postMoodWithId);
+        console.log("Mood posted successfully");
+      } catch (error) {
+        console.error("Failed to post moods", error);
+      }
+
       setCurrentMood("");
       setPostCurrentMood("");
     }
@@ -56,6 +68,20 @@ function MoodBox() {
     setCurrentMood("");
     setPostCurrentMood("");
   };
+
+  // const postMood = async () => {
+  //   try {
+  //     const response = await axios.post(`${url}/mood`, postMoodWithId);
+  //     console.log("Mood posted successfully");
+  //   } catch (error) {
+  //     console.error("Failed to post moods", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+
+  //   postMood();
+  // }, []);
   return (
     <>
       <section className="mood__moodContainer">
