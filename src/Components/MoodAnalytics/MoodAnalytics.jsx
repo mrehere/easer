@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
-import JoyfulChart from "./JoyfulChart";
+import EmotionChart from "./EmotionChart";
 
 function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
@@ -86,9 +86,9 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
 
       {chartSelector === "pie" ? (
         <PieChart mood={moodWithEmoji} moodMap={moodMap} />
-      ) : chartSelector === "joyful" ? (
-        <JoyfulChart mood={moodWithEmoji} />
-      ) : null}
+      ) : (
+        <EmotionChart mood={moodWithEmoji} chart={chartSelector} />
+      )}
     </main>
   );
 }
