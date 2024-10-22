@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./MoodHistory.scss";
 import axios from "axios";
 
-function MoodHistory() {
+function MoodHistory({ isMoodUpdated }) {
   const [mood, setMood] = useState([]);
   const [moodLoading, setMoodLoading] = useState(false);
   const url = import.meta.env.VITE_URL;
@@ -18,32 +18,11 @@ function MoodHistory() {
   };
   useEffect(() => {
     fetchMoods();
-  }, []);
+  }, [isMoodUpdated]);
 
   if (!moodLoading) {
     return <h1>Please standby, mood is Loading....</h1>;
   }
-
-  const moody = [
-    {
-      userId: "12345",
-      moodId: "m2",
-      moodName: "content",
-      createdAt: 1727962226189,
-    },
-    {
-      userId: "12345",
-      moodId: "m1",
-      moodName: "joyful",
-      createdAt: 1729171826189,
-    },
-    {
-      userId: "12345",
-      moodId: "m5",
-      moodName: "crying",
-      createdAt: 1727357426189,
-    },
-  ];
 
   const moodMap = {
     joyful: "😊",

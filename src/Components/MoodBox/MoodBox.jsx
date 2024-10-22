@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./MoodBox.scss";
 
-function MoodBox() {
+function MoodBox({ onMoodPost }) {
   const userId = "12345";
   const moodRef = [
     {
@@ -55,6 +55,9 @@ function MoodBox() {
       try {
         const response = await axios.post(`${url}/mood`, postMoodWithId);
         console.log("Mood posted successfully");
+
+        // -------- update mood list UI --------
+        onMoodPost();
       } catch (error) {
         console.error("Failed to post moods", error);
       }

@@ -8,6 +8,7 @@ import { useState } from "react";
 
 function Mood() {
   const [moodSelection, setMoodSelection] = useState("history");
+  const [moodPostUpdate, setMoodPostUpdate] = useState(false);
 
   const handleMoodSelect = (activeMood) => {
     setMoodSelection(activeMood);
@@ -24,13 +25,19 @@ function Mood() {
     };
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
+
+  // -------- UI update for mood ----------
+  const handleMoodPost = () => {
+    setMoodPostUpdate((prevstate) => !prevstate);
+  };
   return (
     <main className="mood">
       <Header title="Mood" subtitle="Dive into your emotions!" />
       <div className="mood__dateContainer">
         <p className="mood__date">{formatDate(Date.now())}</p>
       </div>
-      <MoodBox />
+
+      <MoodBox onMoodPost={handleMoodPost} />
       <div className="mood__selector">
         <button
           onClick={() => handleMoodSelect("history")}
@@ -49,7 +56,11 @@ function Mood() {
           Analytics
         </button>
       </div>
-      {moodSelection === "analytics" ? <MoodAnalytics /> : <MoodHistory />}
+      {moodSelection === "analytics" ? (
+        <MoodAnalytics />
+      ) : (
+        <MoodHistory isMoodUpdated={moodPostUpdate} />
+      )}
       <Footer />
     </main>
   );
