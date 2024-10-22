@@ -105,20 +105,30 @@ function MoodAnalytics() {
     crying: "😢",
   };
 
-  const moodsWithEmojis = randomMoodData.map((mood) => ({
-    ...mood,
-    emoji: moodMap[mood.moodName],
-  }));
-  console.log(moodsWithEmojis);
+  const addEmojis = (moodArray) => {
+    return moodArray.map((mood) => ({
+      ...mood,
+      emoji: moodMap[mood.moodName],
+    }));
+  };
+
+  const chartData = addEmojis(randomMoodData);
+  console.log(chartData);
 
   // ----------------- CHART -----------------
-  const moodCounts = moodsWithEmojis.reduce((acc, { moodName }) => {
+  const moodCounts = chartData.reduce((acc, { moodName }) => {
     acc[moodName] = (acc[moodName] || 0) + 1;
     return acc;
   }, {});
 
+  const totalMoods = Object.values(moodCounts).reduce(
+    (sum, count) => sum + count,
+    0
+  );
+  console.log(moodCounts);
+
   const data = {
-    labels: Object.keys(moodCounts), // Mood names (e.g., joyful, angry, etc.)
+    labels: Object.keys(moodCounts).map((mood) => `${mood} ${moodMap[mood]}`),
     datasets: [
       {
         label: "Mood Frequency",
@@ -152,7 +162,10 @@ function MoodAnalytics() {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return `${tooltipItem.label}: ${tooltipItem.raw}`;
+            const moodLabel = tooltipItem.label;
+            const moodValue = tooltipItem.raw;
+            const percentage = ((moodValue / totalMoods) * 100).toFixed(2); // Calculate percentage
+            return `${moodLabel}: ${moodValue} (${percentage}%)`;
           },
         },
       },
