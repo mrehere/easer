@@ -30,6 +30,15 @@ function Mood() {
   const handleMoodPost = () => {
     setMoodPostUpdate((prevstate) => !prevstate);
   };
+
+  // this map is used for assigning emojis to incoming mood data from the server
+  const moodMap = {
+    joyful: "😊",
+    content: "🙂",
+    confused: "😕",
+    angry: "😠",
+    crying: "😢",
+  };
   return (
     <main className="mood">
       <Header title="Mood" subtitle="Dive into your emotions!" />
@@ -57,9 +66,9 @@ function Mood() {
         </button>
       </div>
       {moodSelection === "analytics" ? (
-        <MoodAnalytics />
+        <MoodAnalytics moodMap={moodMap} />
       ) : (
-        <MoodHistory isMoodUpdated={moodPostUpdate} />
+        <MoodHistory moodMap={moodMap} isMoodUpdated={moodPostUpdate} />
       )}
       <Footer />
     </main>

@@ -1,2 +1,15 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.analytics {
+  &__titleContainer {
+    @include flex(unset, column, center, center);
+  }
+  &__title {
+    margin-top: 2rem;
+    color: $charcoal;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./MoodHistory.scss";
 import axios from "axios";
 
-function MoodHistory({ isMoodUpdated }) {
+function MoodHistory({ isMoodUpdated, moodMap }) {
   const [mood, setMood] = useState([]);
   const [moodLoading, setMoodLoading] = useState(false);
   const url = import.meta.env.VITE_URL;
@@ -23,14 +23,6 @@ function MoodHistory({ isMoodUpdated }) {
   if (!moodLoading) {
     return <h1>Please standby, mood is Loading....</h1>;
   }
-
-  const moodMap = {
-    joyful: "😊",
-    content: "🙂",
-    confused: "😕",
-    angry: "😠",
-    crying: "😢",
-  };
 
   const moodEmoji = mood.map((mood) => ({
     ...mood,
