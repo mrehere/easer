@@ -3,7 +3,7 @@ import axios from "axios";
 import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
 
-function MoodAnalytics({ moodMap }) {
+function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
   const [moodLoading, setMoodLoading] = useState(true);
   const url = import.meta.env.VITE_URL;
@@ -20,7 +20,7 @@ function MoodAnalytics({ moodMap }) {
       }
     };
     fetchMoods();
-  }, []);
+  }, [isMoodUpdated]);
   if (moodLoading) {
     return <h1>Please wait mood is loading....</h1>;
   }

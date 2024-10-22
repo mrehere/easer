@@ -66,7 +66,7 @@ function Mood() {
         </button>
       </div>
       {moodSelection === "analytics" ? (
-        <MoodAnalytics moodMap={moodMap} />
+        <MoodAnalytics moodMap={moodMap} isMoodUpdated={moodPostUpdate} />
       ) : (
         <MoodHistory moodMap={moodMap} isMoodUpdated={moodPostUpdate} />
       )}
