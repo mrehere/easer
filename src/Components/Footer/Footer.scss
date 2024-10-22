@@ -18,6 +18,7 @@
   &__moodContainer,
   &__homeContainer {
     @include flex(unset, column, center, center);
+    cursor: pointer;
   }
 
   &__journalIcon,
