@@ -1,0 +1,52 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.mood {
+  &__dateContainer {
+    @include flex(unset, row, center, center);
+  }
+
+  &__date {
+    color: $charcoal;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  // selectors
+
+  &__selector {
+    @include flex(unset, row, center, center);
+    margin-top: 2rem;
+  }
+
+  &__history {
+    margin-right: 1rem;
+  }
+
+  &__analytics,
+  &__history {
+    padding: 0.5rem 1rem;
+    border-radius: 0.625rem;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: $paleBlue;
+    color: $charcoal;
+    border: 2px solid $charcoal;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($paleBlue, 5%);
+      transform: scale(1.05);
+    }
+
+    &--selected {
+      background-color: darken($charcoal, 5%);
+      color: darken($paleBlue, 20%);
+      border: 2px solid darken($paleBlue, 20%);
+
+      &:hover {
+        background-color: darken($charcoal, 5%);
+        transform: scale(1.05);
+      }
+    }
+  }
+}

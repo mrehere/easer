@@ -34,6 +34,18 @@
     &:active {
       transform: translateY(-10px);
     }
+
+    &--selected {
+      background-color: lighten($mint, 20%);
+      border: 2px solid $mint;
+      transform: translateY(-12px);
+      border-radius: 50%;
+
+      &:hover {
+        background-color: transparent;
+        border: none;
+      }
+    }
   }
 
   &__joyfulText,
@@ -46,10 +58,10 @@
   }
 
   &__joyful:hover &__joyfulText,
-  &__content:hover .home__contentText,
-  &__confused:hover .home__confusedText,
-  &__angry:hover .home__angryText,
-  &__crying:hover .home__cryingText {
+  &__content:hover &__contentText,
+  &__confused:hover &__confusedText,
+  &__angry:hover &__angryText,
+  &__crying:hover &__cryingText {
     display: block;
     opacity: 1;
     font-size: 0.75rem;

@@ -66,11 +66,12 @@ function Journal() {
     return;
   }
 
+  // ------------------sort the journal entries--------------------
+
   const sortedJournal = journalEntries.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
 
-  // ------------------sort the journal entries--------------------
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const options = {
@@ -78,6 +79,8 @@ function Journal() {
       year: "numeric",
       month: "long",
       day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     };
     return new Intl.DateTimeFormat("en-us", options).format(date);
   };
