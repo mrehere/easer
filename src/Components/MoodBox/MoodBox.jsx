@@ -72,19 +72,6 @@ function MoodBox({ onMoodPost }) {
     setPostCurrentMood("");
   };
 
-  // const postMood = async () => {
-  //   try {
-  //     const response = await axios.post(`${url}/mood`, postMoodWithId);
-  //     console.log("Mood posted successfully");
-  //   } catch (error) {
-  //     console.error("Failed to post moods", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-
-  //   postMood();
-  // }, []);
   return (
     <>
       <section className="mood__moodContainer">
