@@ -3,7 +3,7 @@ import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables); // Register the required components
 
-const EmotionChart = ({ mood, chart }) => {
+const EmotionChart = ({ mood, chart, moodMap }) => {
   const chartRef = useRef(null);
 
   // Filter only current mood and map their createdAt dates and mood count
@@ -37,7 +37,7 @@ const EmotionChart = ({ mood, chart }) => {
         labels, // X-axis labels (months)
         datasets: [
           {
-            label: `${chart} Dataset`,
+            label: `${chart} ${moodMap[chart]}`,
             backgroundColor: "rgba(75, 192, 192, 0.2)", // Area fill color
             borderColor: "rgba(75, 192, 192, 1)", // Line color
             borderWidth: 2,

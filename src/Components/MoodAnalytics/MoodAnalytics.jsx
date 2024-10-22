@@ -87,7 +87,11 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
       {chartSelector === "pie" ? (
         <PieChart mood={moodWithEmoji} moodMap={moodMap} />
       ) : (
-        <EmotionChart mood={moodWithEmoji} chart={chartSelector} />
+        <EmotionChart
+          mood={moodWithEmoji}
+          chart={chartSelector}
+          moodMap={moodMap}
+        />
       )}
     </main>
   );
