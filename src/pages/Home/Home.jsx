@@ -17,7 +17,9 @@ function Home() {
 
         <MoodBox />
         <JournalBox />
-        <Footer />
+        <div className="home__foterContainer">
+          <Footer />
+        </div>
       </main>
     </>
   );

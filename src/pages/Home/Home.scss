@@ -63,4 +63,8 @@
       opacity: 1;
     }
   }
+
+  &__foterContainer {
+    @include flex(unset, row, center, center);
+  }
 }
