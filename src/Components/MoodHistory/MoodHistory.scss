@@ -10,6 +10,13 @@
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 2.5rem;
+    }
   }
 
   &__container {
@@ -20,10 +27,26 @@
     color: #36474f;
     margin-bottom: 0.5rem;
     font-size: 0.75rem;
+    margin: 0 1rem 0 1rem;
+    text-align: center;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+    @include desktop {
+      font-size: 1rem;
+    }
   }
 
   &__mood {
     font-size: 3rem;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+    @include desktop {
+      font-size: 4rem;
+    }
   }
   &__name {
     color: #36474f;

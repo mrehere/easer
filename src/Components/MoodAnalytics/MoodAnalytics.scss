@@ -2,6 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .analytics {
+  margin: 0 1rem 0 1rem;
   &__titleContainer {
     @include flex(unset, column, center, center);
   }
@@ -23,14 +24,12 @@
     color: $charcoal;
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 1.875rem;
+    font-size: 1.25rem;
+    @include flex(1.875rem, row, center, center);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    gap: 4px;
 
     &:hover {
       background-color: $coral;
@@ -38,6 +37,9 @@
     }
     &:active {
       transform: scale(0.95);
+    }
+    &--active {
+      background-color: $coral;
     }
   }
 }
