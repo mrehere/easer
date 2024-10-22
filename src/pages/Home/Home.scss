@@ -9,21 +9,16 @@
     border-radius: 0.5rem;
     opacity: 0;
     transform: translateY(10px);
-    animation: fadeQuote 1s ease-out forwards;
-  }
+    animation: fadeCard 1s ease-out forwards;
+    border: 2px solid $charcoal;
 
-  @keyframes fadeQuote {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
+    @include tablet {
+      margin: 0 8rem 0 8rem;
+      height: 18rem;
+      border-radius: 2rem;
     }
-    50% {
-      opacity: 0.5;
-      transform: translateY(5px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
+    @include desktop {
+      height: 25rem;
     }
   }
 
@@ -34,16 +29,12 @@
 
     text-align: center;
     opacity: 0;
-    animation: textAppear 2s ease-out 0.5s forwards;
-  }
-
-  @keyframes textAppear {
-    0% {
-      opacity: 0;
+    animation: fadeCard 0.75s ease-out 0.5s forwards;
+    @include tablet {
+      font-size: 2rem;
     }
-
-    100% {
-      opacity: 1;
+    @include desktop {
+      font-size: 3rem;
     }
   }
 
@@ -51,16 +42,16 @@
     padding: 2rem 0 1rem 0;
     margin-left: auto;
     opacity: 0;
-    animation: authorFadeIn 1.5s ease-out 2s forwards;
+    animation: fadeCard 0.75s ease-out 2s forwards;
     font-style: italic;
-  }
-
-  @keyframes authorFadeIn {
-    0% {
-      opacity: 0;
+    font-weight: 600;
+    color: $charcoal;
+    @include tablet {
+      font-size: 1.5rem;
     }
-    100% {
-      opacity: 1;
+    @include desktop {
+      padding-top: 6rem;
+      font-size: 2.5rem;
     }
   }
 
