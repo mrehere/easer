@@ -26,7 +26,7 @@ function Home() {
   if (quoteLoading) {
     return <h1>Please standby, quote is loading....</h1>;
   }
-  console.log(quote);
+
   return (
     <>
       <main className="home">
