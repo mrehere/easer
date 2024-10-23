@@ -3,6 +3,14 @@
 
 .analytics {
   margin: 0 1rem 0 1rem;
+
+  @include tablet {
+    margin: 0 6rem 0 6rem;
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  @include desktop {
+    margin: 0 8rem 0 8rem;
+  }
   &__titleContainer {
     @include flex(unset, column, center, center);
   }
@@ -10,8 +18,15 @@
     margin-top: 2rem;
     color: $charcoal;
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 2.5rem;
+    }
   }
 
   &__buttonContainer {
@@ -29,17 +44,44 @@
     @include flex(1.875rem, row, center, center);
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    gap: 4px;
+
+    @include tablet {
+      font-size: 1.75rem;
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+    @include desktop {
+      font-size: 2.25rem;
+
+      width: 3rem;
+      height: 3rem;
+    }
 
     &:hover {
-      background-color: $coral;
-      transform: scale(1.1);
+      background-color: lighten($coral, 10%);
+      transform: scale(1.25);
     }
     &:active {
-      transform: scale(0.95);
+      transform: scale(0.85);
     }
     &--active {
-      background-color: $coral;
+      background-color: lighten($coral, 10%);
+      transform: scale(1.5);
+    }
+  }
+
+  &__pieContainer {
+    @include tablet {
+      margin: 2rem 2rem 2rem 2rem;
+    }
+    @include desktop {
+      margin: 2rem 15rem 2rem 15rem;
+    }
+  }
+
+  &__lineContainer {
+    @include desktop {
+      margin: 2rem 5rem 2rem 5rem;
     }
   }
 }
