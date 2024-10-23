@@ -11,6 +11,7 @@
   &__logo {
     width: 2.5rem;
     margin-right: 0.85rem;
+    cursor: pointer;
     @include tablet {
       width: 3.25rem;
       margin-right: 1rem;
