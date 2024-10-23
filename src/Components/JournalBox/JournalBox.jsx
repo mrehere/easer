@@ -73,6 +73,12 @@ function JournalBox({ addJournalEntry }) {
       return;
     }
   };
+
+  const handleCancel = () => {
+    setTitle("");
+    setJournal("");
+    setInputError(false);
+  };
   return (
     <>
       <form onSubmit={handleSubmit} className="journal__journalContainer">
@@ -100,7 +106,13 @@ function JournalBox({ addJournalEntry }) {
           <button type="submit" className="journal__preserve">
             preserve!
           </button>
-          <button className="journal__cancel">cancel</button>
+          <button
+            type="button"
+            onClick={() => handleCancel()}
+            className="journal__cancel"
+          >
+            cancel
+          </button>
         </div>
         <ToastContainer />
       </form>
