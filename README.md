@@ -101,7 +101,7 @@ createdAt: Date and time when the mood entry was recorded
 
 GET /api/journal
 
-Description: Retrieve all journal entries for a user.
+Description: Retrieve all journal entries for user.
 [
 {
 "userId": "12345",
@@ -187,7 +187,7 @@ Response body:
 ----------------Mood Entry Endpoints----------------
 GET /api/mood
 
-Description: Retrieve all mood entries for a user.
+Description: Retrieve all mood entries for user.
 
 Response body:
 [
