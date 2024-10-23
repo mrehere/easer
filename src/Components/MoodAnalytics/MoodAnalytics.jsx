@@ -4,6 +4,8 @@ import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
 import EmotionChart from "./EmotionChart";
 
+import Rechart1 from "./Rechart1";
+
 function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
   const [moodLoading, setMoodLoading] = useState(true);
@@ -96,16 +98,6 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
         </button>
       </div>
 
-      {/* {chartSelector === "pie" ? (
-        <PieChart mood={moodWithEmoji} moodMap={moodMap} />
-      ) : (
-        <EmotionChart
-          mood={moodWithEmoji}
-          chart={chartSelector}
-          moodMap={moodMap}
-        />
-      )} */}
-
       {chartSelector === "pie" ? (
         <div className="analytics__pieContainer">
           <PieChart mood={moodWithEmoji} moodMap={moodMap} />
@@ -119,6 +111,20 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
           />
         </div>
       )}
+
+      {/* {chartSelector === "pie" ? (
+        <div className="analytics__pieContainer">
+          <Rechart1 />
+        </div>
+      ) : (
+        <div className="analytics__lineContainer">
+          <EmotionChart
+            mood={moodWithEmoji}
+            chart={chartSelector}
+            moodMap={moodMap}
+          />
+        </div>
+      )} */}
     </main>
   );
 }
