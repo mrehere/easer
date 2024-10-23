@@ -10,14 +10,17 @@ function Home() {
         <Header title="easer" subtitle="welcom to your nest!" />
         <section className="home__card">
           <p className="home__quote">
-            Quote of the day Quote of the day Quote of the day
+            Quote of the day Quote of the day Quote of the day Quote of the day
+            Quote of the day Quote of the day
           </p>
           <p className="home__quoteAuthor">-anonymous</p>
         </section>
 
         <MoodBox />
         <JournalBox />
-        <Footer />
+        <div className="home__foterContainer">
+          <Footer />
+        </div>
       </main>
     </>
   );

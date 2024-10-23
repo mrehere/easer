@@ -43,27 +43,35 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
       <div className="analytics__buttonContainer">
         <button
           onClick={() => chartHandler("pie")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "pie" ? "analytics__content--active" : ""
+          } `}
         >
           🥧
         </button>
         <button
           onClick={() => chartHandler("joyful")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "joyful" ? "analytics__content--active" : ""
+          } `}
         >
           😊
         </button>
 
         <button
           onClick={() => chartHandler("content")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "content" ? "analytics__content--active" : ""
+          } `}
         >
           🙂
         </button>
 
         <button
           onClick={() => chartHandler("confused")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "confused" ? "analytics__content--active" : ""
+          } `}
         >
           {" "}
           😕{" "}
@@ -71,20 +79,24 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
 
         <button
           onClick={() => chartHandler("angry")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "angry" ? "analytics__content--active" : ""
+          } `}
         >
           😠
         </button>
 
         <button
           onClick={() => chartHandler("crying")}
-          className="analytics__content"
+          className={`analytics__content ${
+            chartSelector === "crying" ? "analytics__content--active" : ""
+          } `}
         >
           😢
         </button>
       </div>
 
-      {chartSelector === "pie" ? (
+      {/* {chartSelector === "pie" ? (
         <PieChart mood={moodWithEmoji} moodMap={moodMap} />
       ) : (
         <EmotionChart
@@ -92,6 +104,20 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
           chart={chartSelector}
           moodMap={moodMap}
         />
+      )} */}
+
+      {chartSelector === "pie" ? (
+        <div className="analytics__pieContainer">
+          <PieChart mood={moodWithEmoji} moodMap={moodMap} />
+        </div>
+      ) : (
+        <div className="analytics__lineContainer">
+          <EmotionChart
+            mood={moodWithEmoji}
+            chart={chartSelector}
+            moodMap={moodMap}
+          />
+        </div>
       )}
     </main>
   );

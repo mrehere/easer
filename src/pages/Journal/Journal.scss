@@ -9,6 +9,13 @@
     color: $charcoal;
     margin-top: 1rem;
     font-size: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 
   // -------- previous journal --------
@@ -16,12 +23,28 @@
   &__history {
     @include flex(unset, column, center, center);
     margin: 0 2rem 0 2rem;
+
+    @include tablet {
+      margin: 0 8rem 0 8rem;
+    }
+
+    @include desktop {
+      margin: 0 8rem 0 8rem;
+    }
   }
   &__historyTitle {
     color: $charcoal;
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+
+    @include desktop {
+      font-size: 2.5rem;
+    }
   }
 
   &__cardContainer {
@@ -33,12 +56,19 @@
     color: $charcoal;
     margin-bottom: 0.5rem;
     font-size: 0.75rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
   &__card {
     @include flex(100%, column, unset, center);
     background-color: $lavender;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 1rem;
     border: 2px solid $charcoal;
     margin-bottom: 1rem;
   }
@@ -46,10 +76,24 @@
     color: $charcoal;
     font-weight: bold;
     margin-bottom: 0.5rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
   &__text {
     color: $charcoal;
     margin-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
   &__actions {
     display: flex;

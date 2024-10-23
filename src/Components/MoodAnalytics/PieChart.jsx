@@ -20,7 +20,7 @@ function PieChart({ mood, moodMap }) {
     datasets: [
       {
         label: "Mood Frequency",
-        data: Object.values(moodCounts), // Number of occurrences of each mood
+        data: Object.values(moodCounts),
         backgroundColor: [
           "#FF6384",
           "#36A2EB",
