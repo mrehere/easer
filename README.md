@@ -60,15 +60,17 @@ https://zenquotes.io/
 
 Home Page
 
-Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling happy, sad, anxious) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
-Mood Tracker Page
+Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling content, angry, crying, etc.) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
+an overview of the Easer, to log mood and journal.
 
 Mood page
-Description: This page displays users' mood history. Users can view a list of their past mood ratings, providing insight into emotional trends over time. It allows users to track how their mood fluctuates daily.
+The Mood page starts with a **Mood Box** where users can log their current mood. Following this, the MoodHistory sub-page displays all previous mood logs, organized from the latest to the earliest. Next, the Analytics section presents a pie chart summarizing the overall mood analytics. Additionally, there is an individual mood sub-page that visualizes specific moods against months and years, offering deeper insight into emotional trends over time.
 
 Journal Page
 
-Description: Users can view their previous journal entries on this page. It provides an organized list of past reflections, allowing users to revisit their thoughts and experiences.
+Updated description:
+
+This page greets users with a **Journal Box** where they can log a new journal entry with a title. Below, users can view a list of their previous journal entries. Each journal can be edited or deleted, giving users the flexibility to update or remove their reflections as needed.
 
 Home Page
 ├── Mood Tracker Page
@@ -93,7 +95,6 @@ Mood Entry:-
 
 Attributes:
 moodId: Unique identifier for each mood entry
-moodRating: Numerical representation of the user's mood (e.g., 1-5 scale)
 createdAt: Date and time when the mood entry was recorded
 
 ### Endpoints
@@ -302,8 +303,6 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 -daily motivational quotes with the option to mark it as a favorite for future reference
 
--mood statistics where user can see a chart or trend to follow the mode history
-
 -Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
 
 - add authentications
@@ -313,6 +312,5 @@ End of Week 2: All features refined, tested, and deployed with complete document
 -give an emoji picker to chose mood
 
 - add sort/search options for the journal
-- add time on journal dates
 - add visual notifications on forms
 - add error handling style to forms
