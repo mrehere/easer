@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./MoodBox.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MoodBox({ onMoodPost }) {
   const userId = "12345";
@@ -36,6 +38,30 @@ function MoodBox({ onMoodPost }) {
     setCurrentMood(mood);
   };
 
+  const handleSuccess = () => {
+    toast.success(`Mood submitted 🤗`, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-toast",
+      bodyClassName: "custom-toast-body",
+    });
+  };
+  const handleError = () => {
+    toast.error(`Please select an emoji 🥹`, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-toast-error",
+      bodyClassName: "custom-toast-body-error",
+    });
+  };
   useEffect(() => {
     if (currentMood) {
       //using find (returns object) instead of filter (returns array)
@@ -50,7 +76,7 @@ function MoodBox({ onMoodPost }) {
   const postMoodWithId = Object.assign({}, postCurrentMood, { userId });
 
   const handlePreserve = async () => {
-    if (postMoodWithId) {
+    if (postMoodWithId && currentMood) {
       console.log(postMoodWithId);
       try {
         const response = await axios.post(`${url}/mood`, postMoodWithId);
@@ -64,6 +90,10 @@ function MoodBox({ onMoodPost }) {
 
       setCurrentMood("");
       setPostCurrentMood("");
+      handleSuccess();
+    } else {
+      handleError();
+      // alert(`please click an emoji to submit`);
     }
   };
 
@@ -145,6 +175,7 @@ function MoodBox({ onMoodPost }) {
             cancel
           </button>
         </div>
+        <ToastContainer />
       </section>
     </>
   );

@@ -96,16 +96,6 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
         </button>
       </div>
 
-      {/* {chartSelector === "pie" ? (
-        <PieChart mood={moodWithEmoji} moodMap={moodMap} />
-      ) : (
-        <EmotionChart
-          mood={moodWithEmoji}
-          chart={chartSelector}
-          moodMap={moodMap}
-        />
-      )} */}
-
       {chartSelector === "pie" ? (
         <div className="analytics__pieContainer">
           <PieChart mood={moodWithEmoji} moodMap={moodMap} />

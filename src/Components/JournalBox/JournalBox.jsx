@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "./JournalBox.scss";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function JournalBox({ addJournalEntry }) {
   const [title, setTitle] = useState("");
@@ -10,6 +12,33 @@ function JournalBox({ addJournalEntry }) {
   const userId = "12345";
 
   const url = import.meta.env.VITE_URL;
+
+  const [inputError, setInputError] = useState(false);
+  // toaster functions
+  const handleSuccess = () => {
+    toast.success(`Journal submitted 🤗`, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-toast",
+      bodyClassName: "custom-toast-body",
+    });
+  };
+  const handleError = () => {
+    toast.error("Don’t submit your journal empty! 😬", {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      className: "custom-toast-error",
+      bodyClassName: "custom-toast-body-error",
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +62,22 @@ function JournalBox({ addJournalEntry }) {
       setTitle("");
       setJournal("");
       navigate("/journal");
+
+      handleSuccess();
+      setInputError(false);
     } else {
       //stoping from posting if form's empty
       console.log("please enter value for the form");
+      handleError();
+      setInputError(true);
       return;
     }
+  };
+
+  const handleCancel = () => {
+    setTitle("");
+    setJournal("");
+    setInputError(false);
   };
   return (
     <>
@@ -46,7 +86,9 @@ function JournalBox({ addJournalEntry }) {
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="journal__title"
+          className={`journal__title ${
+            inputError ? "journal__title--error" : ""
+          }`}
           type="text"
           placeholder="name your feelings?"
         ></input>
@@ -55,15 +97,24 @@ function JournalBox({ addJournalEntry }) {
           onChange={(e) => setJournal(e.target.value)}
           type="text"
           placeholder="enter your feelings!"
-          className="journal__journal"
+          className={`journal__journal ${
+            inputError ? "journal__journal--error" : ""
+          }`}
         ></textarea>
 
         <div className="journal__buttonContainer">
           <button type="submit" className="journal__preserve">
             preserve!
           </button>
-          <button className="journal__cancel">cancel</button>
+          <button
+            type="button"
+            onClick={() => handleCancel()}
+            className="journal__cancel"
+          >
+            cancel
+          </button>
         </div>
+        <ToastContainer />
       </form>
     </>
   );

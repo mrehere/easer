@@ -154,3 +154,22 @@
     }
   }
 }
+
+//toaster styles
+.custom-toast-error,
+.custom-toast {
+  background-color: darken($paleBlue, 10%) !important;
+  color: darken($coral, 10%) !important;
+  text-align: center;
+  border: 2px solid $charcoal;
+  border-radius: 1rem !important;
+}
+
+.custom-toast-body-error,
+.custom-toast-body {
+  font-weight: 600;
+}
+
+.custom-toast {
+  color: darken($charcoal, 10%) !important;
+}
