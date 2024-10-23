@@ -52,9 +52,7 @@ JSON Files: To store user data, journal entries, and mood tracking data in a lig
 
 ### APIs
 
-https://github.com/lukePeavey/quotable
-https://api.quotable.io/random
-https://zenquotes.io/
+Motion API, created for this project, which handles, journal, mood, and quote data requests for users.
 
 ### Sitemap
 
@@ -230,6 +228,48 @@ Response body:
 "moodName": "content",
 "createdAt": 1729348064921
 }
+}
+
+----------------Quote Endpoints----------------
+
+GET /api/quote
+
+Description: Retrieve all quotes for user.
+
+Response body:
+
+    {
+        "id": 1,
+        "quote": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "length": 56,
+        "category": "motivation",
+        "year": 2005
+    },
+    {
+        "id": 2,
+        "quote": "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+        "author": "Albert Einstein",
+        "length": 113,
+        "category": "creativity",
+        "year": 1929
+    },
+    ....
+
+
+    GET /api/quote/random
+
+Description: Retrieve a random quote for user.
+
+Response body:
+
+{
+"id": 52,
+"quote": "Dream as if you’ll live forever, live as if you’ll die today.",
+"author": "James Dean",
+"length": 67,
+"category": "ambition",
+"year": null
 }
 
 ## Roadmap
