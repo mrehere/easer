@@ -52,23 +52,23 @@ JSON Files: To store user data, journal entries, and mood tracking data in a lig
 
 ### APIs
 
-https://github.com/lukePeavey/quotable
-https://api.quotable.io/random
-https://zenquotes.io/
+Motion API, created for this project, which handles, journal, mood, and quote data requests for users.
 
 ### Sitemap
 
 Home Page
 
-Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling happy, sad, anxious) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
-Mood Tracker Page
+Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling content, angry, crying, etc.) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
+an overview of the Easer, to log mood and journal.
 
 Mood page
-Description: This page displays users' mood history. Users can view a list of their past mood ratings, providing insight into emotional trends over time. It allows users to track how their mood fluctuates daily.
+The Mood page starts with a **Mood Box** where users can log their current mood. Following this, the MoodHistory sub-page displays all previous mood logs, organized from the latest to the earliest. Next, the Analytics section presents a pie chart summarizing the overall mood analytics. Additionally, there is an individual mood sub-page that visualizes specific moods against months and years, offering deeper insight into emotional trends over time.
 
 Journal Page
 
-Description: Users can view their previous journal entries on this page. It provides an organized list of past reflections, allowing users to revisit their thoughts and experiences.
+Updated description:
+
+This page greets users with a **Journal Box** where they can log a new journal entry with a title. Below, users can view a list of their previous journal entries. Each journal can be edited or deleted, giving users the flexibility to update or remove their reflections as needed.
 
 Home Page
 ├── Mood Tracker Page
@@ -93,7 +93,6 @@ Mood Entry:-
 
 Attributes:
 moodId: Unique identifier for each mood entry
-moodRating: Numerical representation of the user's mood (e.g., 1-5 scale)
 createdAt: Date and time when the mood entry was recorded
 
 ### Endpoints
@@ -102,7 +101,7 @@ createdAt: Date and time when the mood entry was recorded
 
 GET /api/journal
 
-Description: Retrieve all journal entries for a user.
+Description: Retrieve all journal entries for user.
 [
 {
 "userId": "12345",
@@ -188,7 +187,7 @@ Response body:
 ----------------Mood Entry Endpoints----------------
 GET /api/mood
 
-Description: Retrieve all mood entries for a user.
+Description: Retrieve all mood entries for user.
 
 Response body:
 [
@@ -229,6 +228,48 @@ Response body:
 "moodName": "content",
 "createdAt": 1729348064921
 }
+}
+
+----------------Quote Endpoints----------------
+
+GET /api/quote
+
+Description: Retrieve all quotes for user.
+
+Response body:
+
+    {
+        "id": 1,
+        "quote": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "length": 56,
+        "category": "motivation",
+        "year": 2005
+    },
+    {
+        "id": 2,
+        "quote": "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+        "author": "Albert Einstein",
+        "length": 113,
+        "category": "creativity",
+        "year": 1929
+    },
+    ....
+
+
+    GET /api/quote/random
+
+Description: Retrieve a random quote for user.
+
+Response body:
+
+{
+"id": 52,
+"quote": "Dream as if you’ll live forever, live as if you’ll die today.",
+"author": "James Dean",
+"length": 67,
+"category": "ambition",
+"year": null
 }
 
 ## Roadmap
@@ -302,8 +343,6 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 -daily motivational quotes with the option to mark it as a favorite for future reference
 
--mood statistics where user can see a chart or trend to follow the mode history
-
 -Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
 
 - add authentications
@@ -313,6 +352,5 @@ End of Week 2: All features refined, tested, and deployed with complete document
 -give an emoji picker to chose mood
 
 - add sort/search options for the journal
-- add time on journal dates
 - add visual notifications on forms
 - add error handling style to forms
