@@ -347,12 +347,8 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 -Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
 
-- add authentications
-
 -establish the database in MySQL with primary userID key, with relation between Mood, and journal entry
 
 -give an emoji picker to chose mood
 
 - add sort/search options for the journal
-- add visual notifications on forms
-- add error handling style to forms
