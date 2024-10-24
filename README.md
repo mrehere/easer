@@ -50,6 +50,8 @@ Data Storage:-
 
 JSON Files: To store user data, journal entries, and mood tracking data in a lightweight, file-based format.
 
+Authentication: Firebase to authenticate user login through email.
+
 ### APIs
 
 Motion API, created for this project, which handles, journal, mood, and quote data requests for users.
