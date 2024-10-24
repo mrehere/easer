@@ -5,7 +5,7 @@ import MoodBox from "../../Components/MoodBox/MoodBox.jsx";
 import "./Home.scss";
 import { useEffect, useState } from "react";
 
-import AuthDetails from "../../Components/auth/AuthDetails.jsx";
+import AuthDetails from "../../Components/auth/AuthDetails/AuthDetails.jsx";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";

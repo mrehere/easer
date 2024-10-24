@@ -6,9 +6,10 @@ import Home from "./pages/Home/Home.jsx";
 import Mood from "./pages/Mood/Mood.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
-import Signin from "./Components/auth/Signin";
+import Signin from "./Components/auth/Signin/Signin.jsx";
 
 import ProtectedRoute from "./Components/auth/ProtectedRoute";
+import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
 // import Home from "./Components/auth/Home";
 
 import { auth } from "./Components/auth/firebase";
@@ -33,7 +34,7 @@ function App() {
           {/* Public Route: Signin */}
           <Route
             path="/"
-            element={authUser ? <Navigate to="/home" /> : <Signin />}
+            element={authUser ? <Navigate to="/home" /> : <UserHandle />}
           />
           {/* Protected Routes */}
           <Route

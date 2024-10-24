@@ -1,0 +1,101 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.userHandle {
+  @include flex(100%, column, center, center);
+  height: 100vh;
+  background-color: $paleBlue;
+  &__container {
+    background-color: darken($paleBlue, 10%);
+    padding: 1rem 1rem 2rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    @include flex(100%, column, center, center);
+    text-align: center;
+
+    @include tablet {
+      max-width: 25rem;
+      padding: 2rem 2rem 3rem 2rem;
+    }
+
+    @include desktop {
+      max-width: 45vw;
+      padding: 4rem 4rem 6rem 4rem;
+    }
+  }
+
+  &__headerContainer {
+    @include flex(unset, row, center, center);
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 2rem;
+    }
+    @include desktop {
+      padding-bottom: 4rem;
+    }
+  }
+  &__logo {
+    width: 2.5rem;
+    margin-right: 0.85rem;
+    cursor: pointer;
+
+    @include tablet {
+      width: 3.25rem;
+      margin-right: 1rem;
+    }
+
+    @include desktop {
+      width: 5rem;
+      margin-right: 1.75rem;
+    }
+  }
+  &__header {
+    color: $charcoal;
+    font-size: 2.5rem;
+
+    @include tablet {
+      font-size: 3rem;
+    }
+
+    @include desktop {
+      font-size: 4rem;
+    }
+  }
+
+  &__buttonContainer {
+    @include flex(100%, row, center, space-between);
+    margin-bottom: 1.5rem;
+  }
+
+  &__signin,
+  &__signup {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: $charcoal;
+    color: $neutral;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $coral;
+    }
+
+    &.active {
+      background-color: $mint;
+      color: $charcoal;
+      cursor: default;
+    }
+  }
+
+  &__toggleText {
+    margin-top: 1rem;
+    color: $charcoal;
+    font-size: 1rem;
+  }
+}
