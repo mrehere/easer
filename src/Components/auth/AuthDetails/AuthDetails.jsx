@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import "./AuthDetails.scss";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import logout from "../../../assets/icons/logout.svg";
 
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -35,7 +37,9 @@ const AuthDetails = () => {
       {authUser ? (
         <>
           {/* <p>{`Signed in as ${authUser.email}`}</p> */}
-          <button onClick={userSignOut}>Sign Out</button>{" "}
+          <button className="logoutContainer" onClick={userSignOut}>
+            <img src={logout} alt="" />
+          </button>{" "}
         </>
       ) : (
         <p>Signed out</p>
