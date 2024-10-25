@@ -4,6 +4,10 @@ import JournalBox from "../../Components/JournalBox/JournalBox.jsx";
 import MoodBox from "../../Components/MoodBox/MoodBox.jsx";
 import "./Home.scss";
 import { useEffect, useState } from "react";
+
+import AuthDetails from "../../Components/auth/AuthDetails/AuthDetails.jsx";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 function Home() {
   const [quote, setQuote] = useState();
@@ -30,6 +34,7 @@ function Home() {
   return (
     <>
       <main className="home">
+        <AuthDetails />
         <Header title="easer" subtitle="welcom to your nest!" />
         <section className="home__card">
           <p className="home__quote">{quote.quote}</p>

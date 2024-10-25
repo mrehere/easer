@@ -1,0 +1,40 @@
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.logoutContainer {
+  background-color: darken($paleBlue, 10%);
+  padding: 0.125rem;
+  border-radius: 50%;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  @include flex(2rem, row, center, center);
+  transition: background-color 0.3s ease;
+  margin: 0.5rem 0.5rem 0 auto;
+  position: relative;
+  border: 1px solid $charcoal;
+
+  &:hover {
+    background-color: $coral;
+    cursor: pointer;
+    &::after {
+      content: "Log Out";
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      color: $charcoal;
+      font-size: 10px;
+      font-weight: 600;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+    }
+  }
+
+  .logoutText {
+    color: $charcoal;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
