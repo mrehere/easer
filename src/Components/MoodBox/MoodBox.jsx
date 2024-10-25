@@ -1,11 +1,28 @@
-import { useEffect, useState } from "react";
+import { act, useEffect, useState } from "react";
 import axios from "axios";
 import "./MoodBox.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "../../Components/auth/firebase";
 
 function MoodBox({ onMoodPost }) {
-  const userId = "12345";
+  // ----------- authentication ------------
+  const [authUser, setAuthUser] = useState(null);
+  const [id, setId] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        setId(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
+  const url = import.meta.env.VITE_URL;
+  const guestId = "12345";
+  const userId = id ? id : guestId;
   const moodRef = [
     {
       moodId: "m1",
@@ -31,7 +48,6 @@ function MoodBox({ onMoodPost }) {
 
   const [currentMood, setCurrentMood] = useState("");
   const [postCurrentMood, setPostCurrentMood] = useState("");
-  const url = import.meta.env.VITE_URL;
 
   // -------handling the mood selection-------
   const handleMoodSelect = (mood) => {
@@ -74,7 +90,7 @@ function MoodBox({ onMoodPost }) {
 
   // -- inserting the userId in the post object
   const postMoodWithId = Object.assign({}, postCurrentMood, { userId });
-
+  console.log(postMoodWithId);
   const handlePreserve = async () => {
     if (postMoodWithId && currentMood) {
       console.log(postMoodWithId);
