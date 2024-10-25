@@ -77,8 +77,10 @@ function Journal() {
   };
 
   useEffect(() => {
-    fetchJournals();
-  }, []);
+    if (userId || guestId) {
+      fetchJournals();
+    }
+  }, [userId]);
 
   //added right after call fetchJournals() for error handling
   if (!journalLoading) {

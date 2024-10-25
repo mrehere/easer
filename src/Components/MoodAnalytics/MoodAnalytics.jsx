@@ -27,7 +27,7 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
   }, []);
 
   const url = import.meta.env.VITE_URL;
-  const guestId = "123455";
+  const guestId = "12345";
   const activeId = userId ? userId : guestId;
   useEffect(() => {
     const fetchMoods = async () => {
@@ -40,8 +40,10 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
         console.error("could not fetch moods", error);
       }
     };
-    fetchMoods();
-  }, [isMoodUpdated]);
+    if (userId || guestId) {
+      fetchMoods();
+    }
+  }, [isMoodUpdated, userId]);
   if (moodLoading) {
     return <h1>Please wait mood is loading....</h1>;
   }

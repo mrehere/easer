@@ -23,7 +23,7 @@ function MoodHistory({ isMoodUpdated, moodMap }) {
   }, []);
 
   const url = import.meta.env.VITE_URL;
-  const guestId = "123455";
+  const guestId = "12345";
   const activeId = userId ? userId : guestId;
 
   const fetchMoods = async () => {
@@ -36,8 +36,10 @@ function MoodHistory({ isMoodUpdated, moodMap }) {
     }
   };
   useEffect(() => {
-    fetchMoods();
-  }, [isMoodUpdated]);
+    if (userId || guestId) {
+      fetchMoods();
+    }
+  }, [isMoodUpdated, userId]);
 
   if (!moodLoading) {
     return <h1>Please standby, mood is Loading....</h1>;
