@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./styles/partials/_global.scss";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Journal from "./pages/Journal/Journal.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Mood from "./pages/Mood/Mood.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+
+import Signin from "./Components/auth/Signin/Signin.jsx";
+
+import ProtectedRoute from "./Components/auth/ProtectedRoute";
+import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
+// import Home from "./Components/auth/Home";
+
+import { auth } from "./Components/auth/firebase";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [authUser, setAuthUser] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Route: Signin */}
+          <Route
+            path="/"
+            element={authUser ? <Navigate to="/home" /> : <UserHandle />}
+          />
+          {/* Protected Routes */}
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute authUser={authUser}>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/journal"
+            element={
+              <ProtectedRoute authUser={authUser}>
+                <Journal />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/mood"
+            element={
+              <ProtectedRoute authUser={authUser}>
+                <Mood />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

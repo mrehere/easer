@@ -1,0 +1,46 @@
+@use "./variables" as *;
+
+@mixin flex($width: unset, $direction: row, $align: normal, $justify: normal) {
+  display: flex;
+  width: $width;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+@keyframes fadeCard {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  20% {
+    opacity: 0.2;
+    transform: translateY(24px);
+  }
+  40% {
+    opacity: 0.4;
+    transform: translateY(18px);
+  }
+  60% {
+    opacity: 0.6;
+    transform: translateY(12px);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}

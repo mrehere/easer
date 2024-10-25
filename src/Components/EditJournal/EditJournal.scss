@@ -1,0 +1,105 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.editJournal {
+  @include flex(100%, column, unset, center);
+  background-color: $lavender;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid $charcoal;
+  margin: 1rem 1rem 1rem 1rem;
+
+  animation: fadeCard 0.2s ease forwards;
+
+  &__back {
+    width: 2.5rem;
+  }
+
+  &__title {
+    border: none;
+    outline: none;
+    background-color: $lavender;
+    color: $charcoal;
+    padding: 1rem 0 0.5rem 0;
+    font-weight: bold;
+    font-size: 1.15rem;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
+    &::placeholder {
+      color: $charcoal;
+      @include tablet {
+        font-size: 1.5rem;
+      }
+      @include desktop {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__journal {
+    border: none;
+    outline: none;
+    background-color: $lavender;
+    color: $charcoal;
+
+    font-size: 1.15rem;
+    resize: none;
+    height: 5rem;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 1.5rem;
+    }
+    &::placeholder {
+      color: $charcoal;
+      @include tablet {
+        font-size: 1.5rem;
+      }
+      @include desktop {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  //button
+  &__buttonContainer {
+    @include flex(100%, row, center, center);
+    margin: 0.5rem 0 0 0;
+
+    @include tablet {
+      justify-content: right;
+    }
+
+    @include desktop {
+      justify-content: right;
+    }
+  }
+
+  &__preserve,
+  &__cancel {
+    border-radius: 0.625rem;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  &__preserve {
+    background-color: lighten($indigoBlue, 10%);
+    margin-right: 1rem;
+    &:hover {
+      background-color: $indigoBlue;
+    }
+  }
+  &__cancel {
+    background-color: lighten($coral, 5%);
+    &:hover {
+      background-color: darken($coral, 10%);
+    }
+  }
+}

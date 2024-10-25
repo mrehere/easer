@@ -50,25 +50,27 @@ Data Storage:-
 
 JSON Files: To store user data, journal entries, and mood tracking data in a lightweight, file-based format.
 
+Authentication: Firebase to authenticate user login through email.
+
 ### APIs
 
-https://github.com/lukePeavey/quotable
-https://api.quotable.io/random
-https://zenquotes.io/
+Motion API, created for this project, which handles, journal, mood, and quote data requests for users.
 
 ### Sitemap
 
 Home Page
 
-Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling happy, sad, anxious) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
-Mood Tracker Page
+Description: The landing page greets users with a daily motivational quote. Users can input their current mood (e.g., feeling content, angry, crying, etc.) and optionally enter a journal entry about their day or moment. This page serves as the primary entry point for daily reflections.
+an overview of the Easer, to log mood and journal.
 
 Mood page
-Description: This page displays users' mood history. Users can view a list of their past mood ratings, providing insight into emotional trends over time. It allows users to track how their mood fluctuates daily.
+The Mood page starts with a **Mood Box** where users can log their current mood. Following this, the MoodHistory sub-page displays all previous mood logs, organized from the latest to the earliest. Next, the Analytics section presents a pie chart summarizing the overall mood analytics. Additionally, there is an individual mood sub-page that visualizes specific moods against months and years, offering deeper insight into emotional trends over time.
 
 Journal Page
 
-Description: Users can view their previous journal entries on this page. It provides an organized list of past reflections, allowing users to revisit their thoughts and experiences.
+Updated description:
+
+This page greets users with a **Journal Box** where they can log a new journal entry with a title. Below, users can view a list of their previous journal entries. Each journal can be edited or deleted, giving users the flexibility to update or remove their reflections as needed.
 
 Home Page
 ├── Mood Tracker Page
@@ -93,84 +95,183 @@ Mood Entry:-
 
 Attributes:
 moodId: Unique identifier for each mood entry
-moodRating: Numerical representation of the user's mood (e.g., 1-5 scale)
 createdAt: Date and time when the mood entry was recorded
 
 ### Endpoints
 
---Journal Entry Endpoints--
-
-POST /api/journal
-Description: Create a new journal entry.
-Parameters: entryText (string, required)
-{
-"message": "Journal entry created successfully.",
-"entryId": "67890",
-"createdAt": "2024-10-15T12:00:00Z"
-}
+----------------Journal Entry Endpoints----------------
 
 GET /api/journal
 
-Description: Retrieve all journal entries for a user.
+Description: Retrieve all journal entries for user.
 [
 {
-"entryId": "67890",
-"entryText": "Today was a good day.",
-"createdAt": "2024-10-15T12:00:00Z"
+"userId": "12345",
+"entryId": "001",
+"title": "Productive Day at Work",
+"entryJournal": "Today, I felt extremely productive and was able to finish several tasks ahead of schedule. I feel accomplished and motivated for the rest of the week.",
+"createdAt": 1729063500000
 },
 {
-"entryId": "67891",
-"entryText": "Learned something new today.",
-"createdAt": "2024-10-14T12:00:00Z"
+"userId": "12345",
+"entryId": "002",
+"title": "Afternoon Walk in the Park",
+"entryJournal": "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
+"createdAt": 1729150800000
 }
 ]
 
-DELETE /api/journal/
+POST /api/journal
+Description: Create a new journal entry.
+
+Post body:
+
+{
+"userId": 12345,
+"title": optional
+"entryJournal": "This one is for example journal !"
+
+}
+
+Response body:
+
+{
+"message": "Journal entry added successfully.",
+"newJournal": {
+"userId": 12345,
+"entryId": "82816d15-2562-418b-ae9e-501227e568ab",
+"title": "unknown-title",
+"entryJournal": "This one is for example journal !",
+"createdAt": 1729348739864
+}
+}
+
+DELETE /api/journal/:entryId
 
 Description: Delete a specific journal entry.
 Parameters:
 entryId (string, required)
 
+Response body:
+
 {
 "message": "Journal entry deleted successfully."
 }
 
---Mood Entry Endpoints--
+UPDATE /api/journal/:entryId
+
+Description: Update a specific journal entry.
+Parameters:
+entryId (string, required)
+
+Update body:
+
+{
+
+"title": (optional),
+"entryJournal": (optional)
+
+}
+
+Response body:
+{
+"message": "Journal entry updated successfully.",
+"updatedJournal": {
+"userId": "12345",
+"entryId": "7b87e9f8-a2a5-477d-a679-8772a514f784",
+"title": "Teee",
+"entryJournal": "hello how about superman",
+"createdAt": 1729297471007,
+"updatedAt": 1729298202655
+}
+}
+
+----------------Mood Entry Endpoints----------------
+GET /api/mood
+
+Description: Retrieve all mood entries for user.
+
+Response body:
+[
+{
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content",
+"createdAt": 1727962226189
+},
+{
+"userId": "12345",
+"moodId": "m1",
+"moodName": "joyful",
+"createdAt": 1729171826189
+},
+...
+]
+
 POST /api/mood
 
 Description: Create a new mood entry.
-Parameters: moodRating (integer, required; e.g., 1-5)
+Parameters: entryId (string, required)
+
+Post body:
+
 {
-"message": "Mood entry recorded successfully.",
-"moodId": "54321",
-"createdAt": "2024-10-15T12:00:00Z"
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content"
 }
 
-GET /api/mood
-
-Description: Retrieve all mood entries for a user.
-
-[
+Response body:
 {
-"moodId": "54321",
-"moodRating": 4,
-"createdAt": "2024-10-15T12:00:00Z"
-},
-{
-"moodId": "54322",
-"moodRating": 3,
-"createdAt": "2024-10-14T12:00:00Z"
+"message": "Mood added successfully.",
+"newMood": {
+"userId": "12345",
+"moodId": "m2",
+"moodName": "content",
+"createdAt": 1729348064921
 }
-]
+}
 
-DELETE /api/mood/
+----------------Quote Endpoints----------------
 
-Description: Delete a specific mood entry.
-Parameters:
-moodId (string, required)
+GET /api/quote
+
+Description: Retrieve all quotes for user.
+
+Response body:
+
+    {
+        "id": 1,
+        "quote": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "length": 56,
+        "category": "motivation",
+        "year": 2005
+    },
+    {
+        "id": 2,
+        "quote": "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+        "author": "Albert Einstein",
+        "length": 113,
+        "category": "creativity",
+        "year": 1929
+    },
+    ....
+
+
+    GET /api/quote/random
+
+Description: Retrieve a random quote for user.
+
+Response body:
 
 {
-"message": "Mood entry deleted successfully."
+"id": 52,
+"quote": "Dream as if you’ll live forever, live as if you’ll die today.",
+"author": "James Dean",
+"length": 67,
+"category": "ambition",
+"year": null
 }
 
 ## Roadmap
@@ -244,12 +345,10 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 -daily motivational quotes with the option to mark it as a favorite for future reference
 
--mood statistics where user can see a chart or trend to follow the mode history
-
 -Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
-
-- add authentications
 
 -establish the database in MySQL with primary userID key, with relation between Mood, and journal entry
 
 -give an emoji picker to chose mood
+
+- add sort/search options for the journal

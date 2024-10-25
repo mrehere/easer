@@ -1,0 +1,65 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.deleteJournal {
+  @include flex(100%, column, unset, center);
+  height: 15rem;
+  background-color: $lavender;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid $charcoal;
+  margin: 1rem 1rem 1rem 1rem;
+  animation: fadeCard 0.2s ease forwards;
+
+  &__disclaimer {
+    color: $charcoal;
+    font-weight: 600;
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: 1.15rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      font-size: 2rem;
+    }
+  }
+
+  //button
+  &__buttonContainer {
+    @include flex(100%, row, center, center);
+    margin: 0.5rem 0 0 0;
+
+    @include tablet {
+      justify-content: right;
+    }
+
+    @include desktop {
+      justify-content: right;
+    }
+  }
+
+  &__delete,
+  &__cancel {
+    border-radius: 0.625rem;
+    font-weight: bold;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  &__delete {
+    background-color: $coral;
+    margin-right: 1rem;
+    &:hover {
+      background-color: darken($coral, 10%);
+    }
+  }
+  &__cancel {
+    background-color: lighten($indigoBlue, 5%);
+    &:hover {
+      background-color: darken($indigoBlue, 10%);
+    }
+  }
+}

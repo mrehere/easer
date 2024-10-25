@@ -1,0 +1,61 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+.home {
+  &__card {
+    @include flex(unset, column, center, center);
+    padding: 0 1rem 0 1rem;
+    margin: 0 2rem 0 2rem;
+    background-color: $neutral;
+    border-radius: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeCard 1s ease-out forwards;
+    border: 2px solid $charcoal;
+
+    @include tablet {
+      margin: 0 8rem 0 8rem;
+      height: 18rem;
+      border-radius: 2rem;
+    }
+    @include desktop {
+      height: 25rem;
+    }
+  }
+
+  &__quote {
+    padding-top: 2rem;
+    font-size: 1.5rem;
+    color: $charcoal;
+
+    text-align: center;
+    opacity: 0;
+    animation: fadeCard 0.75s ease-out 0.5s forwards;
+    @include tablet {
+      font-size: 2rem;
+    }
+    @include desktop {
+      font-size: 3rem;
+    }
+  }
+
+  &__quoteAuthor {
+    padding: 2rem 0 1rem 0;
+    margin-left: auto;
+    opacity: 0;
+    animation: fadeCard 0.75s ease-out 2s forwards;
+    font-style: italic;
+    font-weight: 600;
+    color: $charcoal;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+    @include desktop {
+      padding-top: 6rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__foterContainer {
+    @include flex(unset, row, center, center);
+  }
+}
