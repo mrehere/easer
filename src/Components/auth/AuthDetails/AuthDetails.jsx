@@ -8,7 +8,7 @@ import logout from "../../../assets/icons/logout.svg";
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
-  console.log(auth);
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {

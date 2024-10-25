@@ -3,17 +3,36 @@ import axios from "axios";
 import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
 import EmotionChart from "./EmotionChart";
+import { auth } from "../../Components/auth/firebase";
 
 function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
   const [moodLoading, setMoodLoading] = useState(true);
   const [chartSelector, setChartSelector] = useState("pie");
-  const url = import.meta.env.VITE_URL;
 
+  // ----------- authentication ------------
+
+  const [authUser, setAuthUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        setUserId(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
+
+  const url = import.meta.env.VITE_URL;
+  const guestId = "123455";
+  const activeId = userId ? userId : guestId;
   useEffect(() => {
     const fetchMoods = async () => {
       try {
-        const response = await axios.get(`${url}/mood`);
+        const response = await axios.get(`${url}/mood/${activeId}`);
 
         setMoods(response.data);
         setMoodLoading(false);

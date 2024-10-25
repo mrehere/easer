@@ -11,6 +11,8 @@ import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 import DeleteJournal from "../../Components/DeleteJournal/DeleteJournal.jsx";
 
+import { auth } from "../../Components/auth/firebase.js";
+
 function Journal() {
   const [journalEntries, setJournalEntries] = useState();
   const [journalLoading, setJournalLoading] = useState(false);
@@ -18,11 +20,30 @@ function Journal() {
   const [modal, setModal] = useState(false);
   const [modalAction, setModalAction] = useState(null);
   const [currentJournal, setCurrentJournal] = useState(null);
+
+  // ----------- authentication ------------
+  const [authUser, setAuthUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        setUserId(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
+
   const url = import.meta.env.VITE_URL;
+  const guestId = "12345";
+
+  const activeId = userId ? userId : guestId;
 
   const fetchJournals = async () => {
     try {
-      const response = await axios.get(`${url}/journal`);
+      const response = await axios.get(`${url}/journal/${activeId}`);
       setJournalEntries(response.data);
       setJournalLoading(true);
     } catch (error) {
