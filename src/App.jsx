@@ -6,11 +6,8 @@ import Home from "./pages/Home/Home.jsx";
 import Mood from "./pages/Mood/Mood.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
-import Signin from "./Components/auth/Signin/Signin.jsx";
-
 import ProtectedRoute from "./Components/auth/ProtectedRoute";
 import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
-// import Home from "./Components/auth/Home";
 
 import { auth } from "./Components/auth/firebase";
 
@@ -64,6 +61,11 @@ function App() {
             }
           />
 
+          {/* guest mode */}
+
+          <Route path="/guest/home" element={<Home />} />
+          <Route path="/guest/journal" element={<Journal />} />
+          <Route path="/guest/mood" element={<Mood />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

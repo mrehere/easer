@@ -1,19 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./JournalBox.scss";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { auth } from "../../Components/auth/firebase";
 
 function JournalBox({ addJournalEntry }) {
   const [title, setTitle] = useState("");
   const [journal, setJournal] = useState("");
   const navigate = useNavigate();
-  const userId = "12345";
-
-  const url = import.meta.env.VITE_URL;
-
   const [inputError, setInputError] = useState(false);
+
+  // ----------- authentication ------------
+  const [authUser, setAuthUser] = useState(null);
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        setUserId(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
+  const url = import.meta.env.VITE_URL;
+  const guestId = "12345";
+  const activeId = userId ? userId : guestId;
   // toaster functions
   const handleSuccess = () => {
     toast.success(`Journal submitted 🤗`, {
@@ -42,9 +57,9 @@ function JournalBox({ addJournalEntry }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (userId && title && journal) {
+    if (activeId && title && journal) {
       const entry = {
-        userId: userId,
+        userId: activeId,
         title: title,
         entryJournal: journal,
       };

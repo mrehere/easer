@@ -98,4 +98,28 @@
     color: $charcoal;
     font-size: 1rem;
   }
+
+  &__guest {
+    background-color: $paleBlue;
+    color: $charcoal;
+    padding: 0.625rem 1.25rem;
+    border: 2px solid $charcoal;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 32px;
+    &:hover {
+      background-color: $coral;
+      color: $neutral;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: $charcoal;
+      color: $neutral;
+      transform: scale(0.95);
+    }
+  }
 }
