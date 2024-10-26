@@ -9,6 +9,8 @@ function Footer() {
 
   const [iconSize, setIconSize] = useState(24);
   const [authUser, setAuthUser] = useState(null);
+
+  // ------- authentication check ----------
   useEffect(() => {
     const listen = auth.onAuthStateChanged((user) => {
       if (user) {
