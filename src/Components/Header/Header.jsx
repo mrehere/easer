@@ -1,11 +1,25 @@
 import "./Header.scss";
 import logo from "../../../public/logo.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { auth } from "../auth/firebase";
 function Header({ title, subtitle }) {
   const navigate = useNavigate();
-
+  // ------- authentication check ----------
+  const [authUser, setAuthUser] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        console.log(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
   const handleLogo = () => {
-    navigate("/");
+    authUser ? navigate("/") : navigate("/guest/home");
   };
   return (
     <>
