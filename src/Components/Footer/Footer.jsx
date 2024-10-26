@@ -2,12 +2,24 @@ import { useNavigate } from "react-router-dom";
 
 import "./Footer.scss";
 import { useEffect, useState } from "react";
-
+import { auth } from "../auth/firebase";
 function Footer() {
   const routeStatus = location.pathname;
   const navigate = useNavigate();
 
   const [iconSize, setIconSize] = useState(24);
+  const [authUser, setAuthUser] = useState(null);
+  useEffect(() => {
+    const listen = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuthUser(user);
+        console.log(user.uid);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => listen();
+  }, []);
 
   useEffect(() => {
     const handleIcon = () => {
@@ -32,11 +44,11 @@ function Footer() {
   };
 
   const clickJournal = () => {
-    navigate("/journal");
+    authUser ? navigate("/journal") : navigate("/guest/journal");
   };
 
   const clickMood = () => {
-    navigate("/mood");
+    authUser ? navigate("/mood") : navigate("/guest/mood");
   };
 
   return (
