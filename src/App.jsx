@@ -64,7 +64,7 @@ function App() {
 
           {/* guest mode */}
 
-          <Route path="/guest/home" element={<Journal />} />
+          <Route path="/guest/home" element={<Home />} />
           <Route path="/guest/journal" element={<Journal />} />
           <Route path="/guest/mood" element={<Mood />} />
           <Route path="*" element={<NotFound />} />

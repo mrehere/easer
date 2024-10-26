@@ -9,6 +9,10 @@ const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
   const navigate = useNavigate();
 
+  const guestOut = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -38,11 +42,14 @@ const AuthDetails = () => {
         <>
           {/* <p>{`Signed in as ${authUser.email}`}</p> */}
           <button className="logoutContainer" onClick={userSignOut}>
-            <img src={logout} alt="" />
+            <img src={logout} alt="logout" />
           </button>{" "}
         </>
       ) : (
-        <p>Signed out</p>
+        <button className="logoutContainer" onClick={guestOut}>
+          {" "}
+          <img src={logout} alt="logout" />
+        </button>
       )}
     </div>
   );

@@ -40,7 +40,7 @@ function Footer() {
   }, []);
 
   const clickHome = () => {
-    navigate("/");
+    authUser ? navigate("/") : navigate("/guest/home");
   };
 
   const clickJournal = () => {

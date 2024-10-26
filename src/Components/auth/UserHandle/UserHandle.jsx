@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import "./UserHandle.scss";
 import logo from "../../../../public/logo.png";
+import { useNavigate } from "react-router-dom";
 function UserHandle() {
   const [isLogin, setIsLogin] = useState(true); // State to toggle between sign-in and sign-up
-
+  const navigate = useNavigate();
   const showLogin = () => {
     setIsLogin(true); // Show login form
   };
 
   const showSignup = () => {
     setIsLogin(false); // Show sign-up form
+  };
+
+  const handleGuest = () => {
+    navigate("/guest/home");
   };
 
   return (
@@ -40,6 +46,10 @@ function UserHandle() {
 
         {/* Form toggle */}
         {isLogin ? <Signin /> : <Signup />}
+
+        <button className="userHandle__guest" onClick={handleGuest}>
+          Guest Log in
+        </button>
       </div>
     </div>
   );
