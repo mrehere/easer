@@ -90,10 +90,9 @@ function MoodBox({ onMoodPost }) {
 
   // -- inserting the userId in the post object
   const postMoodWithId = Object.assign({}, postCurrentMood, { userId });
-  console.log(postMoodWithId);
+
   const handlePreserve = async () => {
     if (postMoodWithId && currentMood) {
-      console.log(postMoodWithId);
       try {
         const response = await axios.post(`${url}/mood`, postMoodWithId);
         console.log("Mood posted successfully");
