@@ -89,26 +89,26 @@ Home Page
 
 ### Data
 
-Journal Entry:-
+Journal Entry:- <br/>
 
-Attributes:
+Attributes: <br/>
 entryId: Unique identifier for each journal entry
 entryText: The text of the journal entry
-createdAt: Date and time when the journal entry was created
+createdAt: Date and time when the journal entry was created <br/>
 
-Mood Entry:-
+Mood Entry:- <br/>
 
-Attributes:
+Attributes: <br/>
 moodId: Unique identifier for each mood entry
 createdAt: Date and time when the mood entry was recorded
 
 ### Endpoints
 
-----------------Journal Entry Endpoints----------------
+----------------Journal Entry Endpoints---------------- <br/>
 
-GET /api/journal/:userId
+GET /api/journal/:userId <br/>
 
-Description: Retrieve all journal entries for user.
+Description: Retrieve all journal entries for user.<br/>
 ```json
 {
 "userId": "12345",
@@ -126,8 +126,8 @@ Description: Retrieve all journal entries for user.
 }
 ```
 
-POST /api/journal
-Description: Create a new journal entry.
+POST /api/journal <br/>
+Description: Create a new journal entry. <br/>
 
 Post body:
 ```json
@@ -138,7 +138,7 @@ Post body:
 
 }
 ```
-Response body:
+Response body: <br/>
 ```json
 {
 "message": "Journal entry added successfully.",
@@ -151,10 +151,10 @@ Response body:
 }
 }
 ```
-DELETE /api/journal/:entryId
+DELETE /api/journal/:entryId <br/>
 
-Description: Delete a specific journal entry.
-Parameters:
+Description: Delete a specific journal entry. <br/>
+Parameters: <br/>
 entryId (string, required)
 
 Response body:
@@ -163,10 +163,10 @@ Response body:
 "message": "Journal entry deleted successfully."
 }
 ```
-UPDATE /api/journal/:entryId
+UPDATE /api/journal/:entryId <br/>
 
-Description: Update a specific journal entry.
-Parameters:
+Description: Update a specific journal entry. <br/>
+Parameters: <br/>
 entryId (string, required)
 
 Update body:
@@ -192,10 +192,10 @@ Response body:
 }
 }
 ```
-----------------Mood Entry Endpoints----------------
-GET /api/mood/:userId
+----------------Mood Entry Endpoints---------------- <br/>
+GET /api/mood/:userId <br/>
 
-Description: Retrieve all mood entries for user.
+Description: Retrieve all mood entries for user. <br/>
 
 Response body:
 ```json
@@ -215,10 +215,10 @@ Response body:
 ...
 ]
 ```
-POST /api/mood
+POST /api/mood <br/>
 
-Description: Create a new mood entry.
-Parameters: entryId (string, required)
+Description: Create a new mood entry. <br/>
+Parameters: entryId (string, required) <br/>
 
 Post body:
 ```json
@@ -240,14 +240,14 @@ Response body:
  }
 }
 ```
-----------------Quote Endpoints----------------
+----------------Quote Endpoints---------------- <br/>
 
-GET /api/quote
+GET /api/quote <br/>
 
-Description: Retrieve all quotes for user.
+Description: Retrieve all quotes for user. <br/>
 
-Response body:
-
+Response body: <br/>
+```json
     {
         "id": 1,
         "quote": "The only way to do great work is to love what you do.",
@@ -265,11 +265,11 @@ Response body:
         "year": 1929
     },
     ....
-
+```
 
     GET /api/quote/random
 
-Description: Retrieve a random quote for user.
+Description: Retrieve a random quote for user. <br/>
 
 Response body:
 ```json
