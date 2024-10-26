@@ -351,12 +351,13 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 ## Future Implementations
 
--daily motivational quotes with the option to mark it as a favorite for future reference
+- **Daily Motivational Quotes:** Includes an option to mark quotes as favorites for future reference.
+  
+- **Personal Goals:** Allows users to set and track goals related to emotional well-being, with the ability to mark goals as complete when achieved.
 
--Personal Goals: Users can set and track goals for emotional well-being, marking them as complete when achieved.
+- **Database Structure:** Establish the database in MySQL with `userID` as the primary key and set up relationships between `Mood` and `Journal Entry` tables.
 
--establish the database in MySQL with primary userID key, with relation between Mood, and journal entry
+- **Emoji Picker:** Provides an emoji picker to let users choose their mood.
 
--give an emoji picker to chose mood
+- **Journal Sorting and Searching:** Adds options to sort or search journal entries for easier access and organization.
 
-- add sort/search options for the journal
