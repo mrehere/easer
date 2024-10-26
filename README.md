@@ -18,7 +18,7 @@ Target Users
 The Daily Motivation & Reflection Tracker is for individuals focused on improving their emotional well-being, including busy professionals, students, and those pursuing personal growth.
 
 Usage
-Users will log in daily to receive motivational quotes, journal reflections, track moods, and set personal goals. They can review emotional trends over time through data visualizations.
+Users will log in daily to receive motivational quotes, journal reflections, track moods. They can review emotional trends over time through data visualizations.
 
 Special Considerations
 Simplicity: The app must be easy to use and fit into busy schedules.
@@ -109,7 +109,7 @@ createdAt: Date and time when the mood entry was recorded
 GET /api/journal/:userId
 
 Description: Retrieve all journal entries for user.
-[
+
 {
 "userId": "12345",
 "entryId": "001",
@@ -124,7 +124,7 @@ Description: Retrieve all journal entries for user.
 "entryJournal": "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
 "createdAt": 1729150800000
 }
-]
+
 
 POST /api/journal
 Description: Create a new journal entry.
