@@ -109,7 +109,7 @@ createdAt: Date and time when the mood entry was recorded
 GET /api/journal/:userId
 
 Description: Retrieve all journal entries for user.
-
+```json
 {
 "userId": "12345",
 "entryId": "001",
@@ -124,22 +124,22 @@ Description: Retrieve all journal entries for user.
 "entryJournal": "Took a walk in the park today during my break. The fresh air and sunshine lifted my mood, and I feel more relaxed now.",
 "createdAt": 1729150800000
 }
-
+```
 
 POST /api/journal
 Description: Create a new journal entry.
 
 Post body:
-
+```json
 {
 "userId": 12345,
 "title": optional
 "entryJournal": "This one is for example journal !"
 
 }
-
+```
 Response body:
-
+```json
 {
 "message": "Journal entry added successfully.",
 "newJournal": {
@@ -150,7 +150,7 @@ Response body:
 "createdAt": 1729348739864
 }
 }
-
+```
 DELETE /api/journal/:entryId
 
 Description: Delete a specific journal entry.
@@ -158,11 +158,11 @@ Parameters:
 entryId (string, required)
 
 Response body:
-
+```json
 {
 "message": "Journal entry deleted successfully."
 }
-
+```
 UPDATE /api/journal/:entryId
 
 Description: Update a specific journal entry.
@@ -170,15 +170,16 @@ Parameters:
 entryId (string, required)
 
 Update body:
-
+```json
 {
 
 "title": (optional),
 "entryJournal": (optional)
 
 }
-
+```
 Response body:
+```json
 {
 "message": "Journal entry updated successfully.",
 "updatedJournal": {
@@ -190,43 +191,45 @@ Response body:
 "updatedAt": 1729298202655
 }
 }
-
+```
 ----------------Mood Entry Endpoints----------------
 GET /api/mood/:userId
 
 Description: Retrieve all mood entries for user.
 
 Response body:
+```json
 [
-{
+ {
 "userId": "12345",
 "moodId": "m2",
 "moodName": "content",
 "createdAt": 1727962226189
-},
-{
+ },
+ {
 "userId": "12345",
 "moodId": "m1",
 "moodName": "joyful",
 "createdAt": 1729171826189
-},
+ },
 ...
 ]
-
+```
 POST /api/mood
 
 Description: Create a new mood entry.
 Parameters: entryId (string, required)
 
 Post body:
-
+```json
 {
 "userId": "12345",
 "moodId": "m2",
 "moodName": "content"
 }
-
+```
 Response body:
+```json
 {
 "message": "Mood added successfully.",
 "newMood": {
@@ -234,9 +237,9 @@ Response body:
 "moodId": "m2",
 "moodName": "content",
 "createdAt": 1729348064921
+ }
 }
-}
-
+```
 ----------------Quote Endpoints----------------
 
 GET /api/quote
@@ -269,7 +272,7 @@ Response body:
 Description: Retrieve a random quote for user.
 
 Response body:
-
+```json
 {
 "id": 52,
 "quote": "Dream as if you’ll live forever, live as if you’ll die today.",
@@ -278,7 +281,7 @@ Response body:
 "category": "ambition",
 "year": null
 }
-
+```
 ## Roadmap
 
 Week 1 <br/>
