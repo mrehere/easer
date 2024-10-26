@@ -78,9 +78,14 @@ Home Page
 
 ### Mockups
 
-![landing](/src/assets/images/landing.png)
-![journal](/src/assets/images/journal.png)
-![tracker](/src/assets/images/tracker.png)
+![login-page1](/public/login-page1.png)
+![home1](/public/home1.png)
+![journal1](/public/journal1.png)
+![journal-edit](/public/journal-edit.png)
+![journal-delete](/public/journal-delete.png)
+![mood-history](/public/mood-history.png)
+![mood-individualEmotionChart](/public/mood-individualEmotionChart.png)
+![mood-pieChart](/public/mood-pieChart.png)
 
 ### Data
 
