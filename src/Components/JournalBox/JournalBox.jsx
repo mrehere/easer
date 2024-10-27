@@ -76,7 +76,7 @@ function JournalBox({ addJournalEntry }) {
 
       setTitle("");
       setJournal("");
-      navigate("/journal");
+      authUser ? navigate("/journal") : navigate("/guest/journal");
 
       handleSuccess();
       setInputError(false);
