@@ -1,30 +1,19 @@
 import { useEffect, useState } from "react";
 import "./MoodHistory.scss";
 import axios from "axios";
-import { auth } from "../../Components/auth/firebase";
+
+import useAuth from "../../Components/auth/useAuth.js";
 
 function MoodHistory({ isMoodUpdated, moodMap }) {
   const [mood, setMood] = useState([]);
   const [moodLoading, setMoodLoading] = useState(false);
 
   // ----------- authentication ------------
-  const [authUser, setAuthUser] = useState(null);
-  const [userId, setUserId] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-        setUserId(user.uid);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser, authId } = useAuth();
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
-  const activeId = userId ? userId : guestId;
+  let activeId = authId ? authId : guestId;
 
   const fetchMoods = async () => {
     try {
@@ -36,10 +25,10 @@ function MoodHistory({ isMoodUpdated, moodMap }) {
     }
   };
   useEffect(() => {
-    if (userId || guestId) {
+    if (activeId) {
       fetchMoods();
     }
-  }, [isMoodUpdated, userId]);
+  }, [isMoodUpdated, authId, authUser]);
 
   if (!moodLoading) {
     return <h1>Please standby, mood is Loading....</h1>;

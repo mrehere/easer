@@ -3,26 +3,15 @@ import axios from "axios";
 import "./MoodBox.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { auth } from "../../Components/auth/firebase";
+
+import useAuth from "../../Components/auth/useAuth.js";
 
 function MoodBox({ onMoodPost }) {
   // ----------- authentication ------------
-  const [authUser, setAuthUser] = useState(null);
-  const [id, setId] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-        setId(user.uid);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser, authId } = useAuth();
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
-  const userId = id ? id : guestId;
+  let userId = authUser ? authId : guestId;
   const moodRef = [
     {
       moodId: "m1",
