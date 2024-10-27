@@ -57,8 +57,8 @@ Authentication: Firebase to authenticate user login through email.
 
 ### APIs
 
-Motion API, created for this project, which handles, journal, mood, and quote data requests for users. <br/>
-link: https://frozen-mesa-72081-6a53e41f4d72.herokuapp.com/
+[Motion API](https://frozen-mesa-72081-6a53e41f4d72.herokuapp.com/), created for this project, which handles, journal, mood, and quote data requests for users. <br/>
+
 
 ### Sitemap
 
