@@ -11,7 +11,7 @@ import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 import DeleteJournal from "../../Components/DeleteJournal/DeleteJournal.jsx";
 
-import { auth } from "../../Components/auth/firebase.js";
+import useAuth from "../../Components/auth/useAuth.js";
 
 function Journal() {
   const [journalEntries, setJournalEntries] = useState();
@@ -22,24 +22,12 @@ function Journal() {
   const [currentJournal, setCurrentJournal] = useState(null);
 
   // ----------- authentication ------------
-  const [authUser, setAuthUser] = useState(null);
-  const [userId, setUserId] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-        setUserId(user.uid);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser, authId } = useAuth();
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
 
-  const activeId = userId ? userId : guestId;
+  let activeId = authUser ? authId : guestId;
 
   const fetchJournals = async () => {
     try {
@@ -77,16 +65,14 @@ function Journal() {
   };
 
   useEffect(() => {
-    if (userId || guestId) {
+    if (activeId) {
       fetchJournals();
     }
-  }, [userId]);
+  }, [authUser, authId]);
 
   //added right after call fetchJournals() for error handling
   if (!journalLoading) {
-    <h1>Please stand by, Journal Entries are loading....</h1>;
-
-    return;
+    return <h1>Please stand by, Journal Entries are loading....</h1>;
   }
 
   // ------------------sort the journal entries--------------------
