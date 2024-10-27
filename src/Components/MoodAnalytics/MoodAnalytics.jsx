@@ -4,6 +4,7 @@ import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
 import EmotionChart from "./EmotionChart";
 import { auth } from "../../Components/auth/firebase";
+import useAuth from "../../Components/auth/useAuth.js";
 
 function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
@@ -11,24 +12,11 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [chartSelector, setChartSelector] = useState("pie");
 
   // ----------- authentication ------------
-
-  const [authUser, setAuthUser] = useState(null);
-  const [userId, setUserId] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-        setUserId(user.uid);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser, authId } = useAuth();
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
-  const activeId = userId ? userId : guestId;
+  let activeId = authId ? authId : guestId;
   useEffect(() => {
     const fetchMoods = async () => {
       try {
@@ -40,10 +28,10 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
         console.error("could not fetch moods", error);
       }
     };
-    if (userId || guestId) {
+    if (activeId) {
       fetchMoods();
     }
-  }, [isMoodUpdated, userId]);
+  }, [isMoodUpdated, authId, authUser]);
   if (moodLoading) {
     return <h1>Please wait mood is loading....</h1>;
   }

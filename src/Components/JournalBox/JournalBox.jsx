@@ -4,7 +4,7 @@ import "./JournalBox.scss";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { auth } from "../../Components/auth/firebase";
+
 import useAuth from "../../Components/auth/useAuth.js";
 
 function JournalBox({ addJournalEntry }) {
