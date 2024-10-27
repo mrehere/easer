@@ -4,7 +4,8 @@ import "./JournalBox.scss";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { auth } from "../../Components/auth/firebase";
+
+import useAuth from "../../Components/auth/useAuth.js";
 
 function JournalBox({ addJournalEntry }) {
   const [title, setTitle] = useState("");
@@ -13,22 +14,10 @@ function JournalBox({ addJournalEntry }) {
   const [inputError, setInputError] = useState(false);
 
   // ----------- authentication ------------
-  const [authUser, setAuthUser] = useState(null);
-  const [userId, setUserId] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-        setUserId(user.uid);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser, authId } = useAuth();
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
-  const activeId = userId ? userId : guestId;
+  let activeId = authUser ? authId : guestId;
   // toaster functions
   const handleSuccess = () => {
     toast.success(`Journal submitted 🤗`, {
@@ -76,7 +65,7 @@ function JournalBox({ addJournalEntry }) {
 
       setTitle("");
       setJournal("");
-      navigate("/journal");
+      authUser ? navigate("/journal") : navigate("/guest/journal");
 
       handleSuccess();
       setInputError(false);

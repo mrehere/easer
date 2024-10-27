@@ -15,7 +15,6 @@ function Footer() {
     const listen = auth.onAuthStateChanged((user) => {
       if (user) {
         setAuthUser(user);
-        console.log(user.uid);
       } else {
         setAuthUser(null);
       }

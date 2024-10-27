@@ -8,7 +8,6 @@ EASER <br/>
 <p>The Daily Motivation & Reflection Tracker is a web application primarily designed for mobile devices that helps users improve their emotional well-being. The app provides daily motivational quotes and a platform for self-reflection, allowing users to track their moods and journal about their day. Additionally, it offers insights and visualizations of their emotional experiences over time, all optimized for a seamless mobile experience.</p>
 <br/>
 
-
 <p>Disclaimer: This application is currently under development and features may change at any time.</p>
 
 ### Problem Space
@@ -58,7 +57,6 @@ Authentication: Firebase to authenticate user login through email.
 ### APIs
 
 [Motion API](https://frozen-mesa-72081-6a53e41f4d72.herokuapp.com/), created for this project, which handles, journal, mood, and quote data requests for users. <br/>
-
 
 ### Sitemap
 
@@ -113,6 +111,7 @@ createdAt: Date and time when the mood entry was recorded
 GET /api/journal/:userId <br/>
 
 Description: Retrieve all journal entries for user.<br/>
+
 ```json
 {
 "userId": "12345",
@@ -134,6 +133,7 @@ POST /api/journal <br/>
 Description: Create a new journal entry. <br/>
 
 Post body:
+
 ```json
 {
 "userId": 12345,
@@ -142,19 +142,22 @@ Post body:
 
 }
 ```
+
 Response body: <br/>
+
 ```json
 {
-"message": "Journal entry added successfully.",
-"newJournal": {
-"userId": 12345,
-"entryId": "82816d15-2562-418b-ae9e-501227e568ab",
-"title": "unknown-title",
-"entryJournal": "This one is for example journal !",
-"createdAt": 1729348739864
-}
+  "message": "Journal entry added successfully.",
+  "newJournal": {
+    "userId": 12345,
+    "entryId": "82816d15-2562-418b-ae9e-501227e568ab",
+    "title": "unknown-title",
+    "entryJournal": "This one is for example journal !",
+    "createdAt": 1729348739864
+  }
 }
 ```
+
 DELETE /api/journal/:entryId <br/>
 
 Description: Delete a specific journal entry. <br/>
@@ -162,11 +165,13 @@ Parameters: <br/>
 entryId (string, required)
 
 Response body:
+
 ```json
 {
-"message": "Journal entry deleted successfully."
+  "message": "Journal entry deleted successfully."
 }
 ```
+
 UPDATE /api/journal/:entryId <br/>
 
 Description: Update a specific journal entry. <br/>
@@ -174,6 +179,7 @@ Parameters: <br/>
 entryId (string, required)
 
 Update body:
+
 ```json
 {
 
@@ -182,26 +188,30 @@ Update body:
 
 }
 ```
+
 Response body:
+
 ```json
 {
-"message": "Journal entry updated successfully.",
-"updatedJournal": {
-"userId": "12345",
-"entryId": "7b87e9f8-a2a5-477d-a679-8772a514f784",
-"title": "Teee",
-"entryJournal": "hello how about superman",
-"createdAt": 1729297471007,
-"updatedAt": 1729298202655
-}
+  "message": "Journal entry updated successfully.",
+  "updatedJournal": {
+    "userId": "12345",
+    "entryId": "7b87e9f8-a2a5-477d-a679-8772a514f784",
+    "title": "Teee",
+    "entryJournal": "hello how about superman",
+    "createdAt": 1729297471007,
+    "updatedAt": 1729298202655
+  }
 }
 ```
+
 ----------------Mood Entry Endpoints---------------- <br/>
 GET /api/mood/:userId <br/>
 
 Description: Retrieve all mood entries for user. <br/>
 
 Response body:
+
 ```json
 [
  {
@@ -219,31 +229,36 @@ Response body:
 ...
 ]
 ```
+
 POST /api/mood <br/>
 
 Description: Create a new mood entry. <br/>
 Parameters: entryId (string, required) <br/>
 
 Post body:
+
 ```json
 {
-"userId": "12345",
-"moodId": "m2",
-"moodName": "content"
+  "userId": "12345",
+  "moodId": "m2",
+  "moodName": "content"
 }
 ```
+
 Response body:
+
 ```json
 {
-"message": "Mood added successfully.",
-"newMood": {
-"userId": "12345",
-"moodId": "m2",
-"moodName": "content",
-"createdAt": 1729348064921
- }
+  "message": "Mood added successfully.",
+  "newMood": {
+    "userId": "12345",
+    "moodId": "m2",
+    "moodName": "content",
+    "createdAt": 1729348064921
+  }
 }
 ```
+
 ----------------Quote Endpoints---------------- <br/>
 
 GET /api/quote <br/>
@@ -251,6 +266,7 @@ GET /api/quote <br/>
 Description: Retrieve all quotes for user. <br/>
 
 Response body: <br/>
+
 ```json
     {
         "id": 1,
@@ -276,16 +292,18 @@ Response body: <br/>
 Description: Retrieve a random quote for user. <br/>
 
 Response body:
+
 ```json
 {
-"id": 52,
-"quote": "Dream as if you’ll live forever, live as if you’ll die today.",
-"author": "James Dean",
-"length": 67,
-"category": "ambition",
-"year": null
+  "id": 52,
+  "quote": "Dream as if you’ll live forever, live as if you’ll die today.",
+  "author": "James Dean",
+  "length": 67,
+  "category": "ambition",
+  "year": null
 }
 ```
+
 ## Roadmap
 
 Week 1 <br/>
@@ -356,7 +374,6 @@ End of Week 2: All features refined, tested, and deployed with complete document
 ## Future Implementations
 
 - **Daily Motivational Quotes:** Includes an option to mark quotes as favorites for future reference.
-  
 - **Personal Goals:** Allows users to set and track goals related to emotional well-being, with the ability to mark goals as complete when achieved.
 
 - **Database Structure:** Establish the database in MySQL with `userID` as the primary key and set up relationships between `Mood` and `Journal Entry` tables.
@@ -364,4 +381,3 @@ End of Week 2: All features refined, tested, and deployed with complete document
 - **Emoji Picker:** Provides an emoji picker to let users choose their mood.
 
 - **Journal Sorting and Searching:** Adds options to sort or search journal entries for easier access and organization.
-

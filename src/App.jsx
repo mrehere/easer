@@ -9,20 +9,10 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 import ProtectedRoute from "./Components/auth/ProtectedRoute";
 import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
 
-import { auth } from "./Components/auth/firebase";
+import useAuth from "./Components/auth/useAuth.js";
 
 function App() {
-  const [authUser, setAuthUser] = useState(null);
-  useEffect(() => {
-    const listen = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => listen();
-  }, []);
+  const { authUser } = useAuth();
 
   return (
     <>
