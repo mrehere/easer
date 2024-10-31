@@ -1,12 +1,16 @@
 import "./Signin.scss";
 import { useState } from "react";
 import { auth } from "../firebase";
+import { useAuth } from "../AuthContext";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { loggedUser } = useAuth();
   const navigate = useNavigate();
 
   const signIn = (e) => {
@@ -16,9 +20,17 @@ function Signin() {
       .then((userCradential) => {
         console.log(userCradential);
         navigate("/home");
+
+        if (loggedUser) {
+          setTimeout(() => {
+            toast.success("Login successful!");
+            navigate("/home");
+          }, 4000);
+        }
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Login failed. Please check your credentials.");
       });
   };
   return (
@@ -42,6 +54,7 @@ function Signin() {
       <button className="signIn__login" type="submit">
         Log in
       </button>
+      <ToastContainer />
     </form>
   );
 }

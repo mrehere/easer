@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 import ProtectedRoute from "./Components/auth/ProtectedRoute";
 import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
 
-import { AuthProvider, useAuth } from "./Components/auth/AuthContext.jsx";
+import { AuthProvider } from "./Components/auth/AuthContext.jsx";
 
 function App() {
   return (
