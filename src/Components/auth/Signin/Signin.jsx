@@ -20,10 +20,10 @@ function Signin() {
       .then((userCradential) => {
         console.log(userCradential);
         navigate("/home");
+        toast.success("Login successful!");
 
         if (loggedUser) {
           setTimeout(() => {
-            toast.success("Login successful!");
             navigate("/home");
           }, 4000);
         }
