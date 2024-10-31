@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
 import Signin from "../Signin/Signin";
 import Signup from "../Signup/Signup";
 import "./UserHandle.scss";
 import logo from "../../../../public/logo.png";
 import { useNavigate } from "react-router-dom";
+
 function UserHandle() {
-  const [isLogin, setIsLogin] = useState(true); // State to toggle between sign-in and sign-up
   const navigate = useNavigate();
+
+  const [isLogin, setIsLogin] = useState(true);
+
   const showLogin = () => {
     setIsLogin(true); // Show login form
   };

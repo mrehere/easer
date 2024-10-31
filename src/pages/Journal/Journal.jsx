@@ -11,7 +11,7 @@ import editIcon from "../../assets/icons/edit.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 import DeleteJournal from "../../Components/DeleteJournal/DeleteJournal.jsx";
 
-import useAuth from "../../Components/auth/useAuth.js";
+import { useAuth } from "../../Components/auth/AuthContext";
 
 function Journal() {
   const [journalEntries, setJournalEntries] = useState();
@@ -22,7 +22,9 @@ function Journal() {
   const [currentJournal, setCurrentJournal] = useState(null);
 
   // ----------- authentication ------------
-  const { authUser, authId } = useAuth();
+  const { loggedUser, loggedId } = useAuth();
+  let authUser = loggedUser;
+  let authId = loggedId;
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
