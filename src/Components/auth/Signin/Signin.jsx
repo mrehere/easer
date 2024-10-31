@@ -2,10 +2,12 @@ import "./Signin.scss";
 import { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const signIn = (e) => {
     // todo sign in
@@ -13,6 +15,7 @@ function Signin() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCradential) => {
         console.log(userCradential);
+        navigate("/home");
       })
       .catch((error) => {
         console.log(error);
