@@ -46,11 +46,11 @@ SCSS: For styling and ensuring a responsive, mobile-first design.
 
 Backend:-
 
-Node.js with Express.js, and MySQL: To handle server-side logic and API requests, managing user data and journaling functionality.
+Node.js with Express.js, and MySQL with knex.js: To handle server-side logic and API requests, managing user data and journaling functionality.
 
 Data Storage:-
 
-JSON Files: To store user data, journal entries, and mood tracking data in a lightweight, file-based format.
+MySQL: To store user data, journal entries, and mood tracking data in a relational Database with MySQL, utilizing knex.js.
 
 Authentication: Firebase to authenticate user login through email.
 
