@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import useAuth from "../../Components/auth/useAuth.js";
+import { useAuth } from "../../Components/auth/AuthContext";
 
 function JournalBox({ addJournalEntry }) {
   const [title, setTitle] = useState("");
@@ -14,7 +14,10 @@ function JournalBox({ addJournalEntry }) {
   const [inputError, setInputError] = useState(false);
 
   // ----------- authentication ------------
-  const { authUser, authId } = useAuth();
+  const { loggedUser, loggedId } = useAuth();
+  let authUser = loggedUser;
+  let authId = loggedId;
+
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
   let activeId = authUser ? authId : guestId;
