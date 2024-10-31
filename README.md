@@ -46,7 +46,7 @@ SCSS: For styling and ensuring a responsive, mobile-first design.
 
 Backend:-
 
-Node.js with Express.js: To handle server-side logic and API requests, managing user data and journaling functionality.
+Node.js with Express.js, and MySQL: To handle server-side logic and API requests, managing user data and journaling functionality.
 
 Data Storage:-
 
@@ -375,8 +375,6 @@ End of Week 2: All features refined, tested, and deployed with complete document
 
 - **Daily Motivational Quotes:** Includes an option to mark quotes as favorites for future reference.
 - **Personal Goals:** Allows users to set and track goals related to emotional well-being, with the ability to mark goals as complete when achieved.
-
-- **Database Structure:** Establish the database in MySQL with `userID` as the primary key and set up relationships between `Mood` and `Journal Entry` tables.
 
 - **Emoji Picker:** Provides an emoji picker to let users choose their mood.
 
