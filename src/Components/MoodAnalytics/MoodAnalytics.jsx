@@ -3,8 +3,7 @@ import axios from "axios";
 import "./MoodAnalytics.scss";
 import PieChart from "./PieChart";
 import EmotionChart from "./EmotionChart";
-import { auth } from "../../Components/auth/firebase";
-import useAuth from "../../Components/auth/useAuth.js";
+import { useAuth } from "../../Components/auth/AuthContext";
 
 function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [moods, setMoods] = useState();
@@ -12,7 +11,9 @@ function MoodAnalytics({ moodMap, isMoodUpdated }) {
   const [chartSelector, setChartSelector] = useState("pie");
 
   // ----------- authentication ------------
-  const { authUser, authId } = useAuth();
+  const { loggedUser, loggedId } = useAuth();
+  let authUser = loggedUser;
+  let authId = loggedId;
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";
