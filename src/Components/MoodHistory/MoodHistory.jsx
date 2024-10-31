@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import "./MoodHistory.scss";
 import axios from "axios";
 
-import useAuth from "../../Components/auth/useAuth.js";
+import { useAuth } from "../../Components/auth/AuthContext";
 
 function MoodHistory({ isMoodUpdated, moodMap }) {
   const [mood, setMood] = useState([]);
   const [moodLoading, setMoodLoading] = useState(false);
 
   // ----------- authentication ------------
-  const { authUser, authId } = useAuth();
+  const { loggedUser, loggedId } = useAuth();
+  let authUser = loggedUser;
+  let authId = loggedId;
 
   const url = import.meta.env.VITE_URL;
   const guestId = "12345";

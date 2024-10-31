@@ -9,8 +9,6 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 import ProtectedRoute from "./Components/auth/ProtectedRoute";
 import UserHandle from "./Components/auth/UserHandle/UserHandle.jsx";
 
-// import useAuth from "./Components/auth/useAuth.js";
-
 import { AuthProvider, useAuth } from "./Components/auth/AuthContext.jsx";
 
 function App() {
